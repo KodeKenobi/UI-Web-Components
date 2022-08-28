@@ -1,0 +1,252 @@
+﻿@model PolicyManagementSystem.Controllers.Models.ApplicantRegistrationViewModel;
+
+@{
+    Layout = null;
+}
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PIB MTG Applicant Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="~/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/libs/css/style.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () { // will trigger when the document is ready
+                $('.datepicker').datepicker(); //Initialise any date pickers
+            });
+        })
+    </script>
+</head>
+<!-- ============================================================== -->
+<!-- signup form  -->
+<!-- ============================================================== -->
+
+<body>
+    <!-- ============================================================== -->
+    <!-- signup form  -->
+    <!-- ============================================================== -->
+    @*<form class="splash-container">*@
+    @using (Html.BeginForm("RegisterApplicant", "ApplicantRegistration", FormMethod.Post, new { @class = "splash-container", @id="RegisterApplicant" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                <a href="#" style="text-align:center"><img class="logo-img" src="~/assets/images/logo.jpeg" alt="logo"><img class="logo-img" style="width: 130px; height: 70px;" src="~/assets/images/MTGlogo.png" alt="logo"></a>
+                <h3 class="mb-1" >Applicant Registration Form</h3>
+                @*<p>Please enter your user information.</p>*@
+            </div>
+            <div class="card-body">
+                <div id="error" style="color: red;"></div>
+                <div id="errsssor" style="color: red;">@Html.ValidationMessage("error")</div>
+
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Title</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Title, new { @class = "form-control form-control-lg", required = "", placeholder = "Title" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">First Name</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.FirstName, new { @class = "form-control form-control-lg", required = "", placeholder = "First Name" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.MaidenName, new { @class = "form-control form-control-lg", placeholder = "Maiden Name" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Surname</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Surname, new { @class = "form-control form-control-lg", required = "", placeholder = "Surname" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Email</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Email, new { @class = "form-control form-control-lg", required = "", placeholder = "Email" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Phone</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Phone, new { @class = "form-control form-control-lg", placeholder = "Phone" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label"></label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Idnum, new { @class = "form-control form-control-lg", required = "", placeholder = "ID Number" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Date of Birth</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Dob, new { @class = "form-control form-control-lg datepicker", @type = "date", placeholder = "YYYY-MM-DD" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Occupation</label><br />
+                    @Html.TextBoxFor(x => x.MemberApplication.Occupation, new { @class = "form-control form-control-lg", placeholder = "Occupation" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Password</label><br />
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control form-control-lg", required = "", placeholder = "Password" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Gender</label><br />
+                    @Html.DropDownListFor(x => x.MemberApplication.Sex, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Male", Value = "Male" },
+                       new SelectListItem{ Text="Female", Value = "Female" }
+                    }, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">AddressLine 1</label><br />
+                    @Html.TextBoxFor(m => m.CreateAddressModel.AddressLine1, new { @class = "form-control form-control-lg", placeholder = "AddressLine 1" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">AddressLine 2</label><br />
+                    @Html.TextBoxFor(m => m.CreateAddressModel.AddressLine2, new { @class = "form-control form-control-lg", placeholder = "AddressLine 2" })
+                </div>
+
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Province</label><br />
+                    @Html.DropDownListFor(x => x.CreateAddressModel.Province, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Limpopo", Value = "Male" },
+                       new SelectListItem{ Text="Gauteng", Value = "Female" },
+                       new SelectListItem{ Text="Free State", Value = "Female" }
+                    }, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label"> City</label><br />
+                    @Html.TextBoxFor(m => m.CreateAddressModel.City, new { @class = "form-control form-control-lg", placeholder = "City" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label"> Postal Code</label><br />
+                    @Html.TextBoxFor(m => m.CreateAddressModel.PostalCode, new { @class = "form-control form-control-lg", placeholder = "Postal Code" })
+                </div>
+                <div class="form-group pt-2">
+                    <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+                </div>
+                @*<div class="form-group">
+            <label class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a></span>
+            </label>
+        </div>
+        <div class="form-group row pt-0">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                <button class="btn btn-block btn-social btn-facebook " type="button">Facebook</button>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <button class="btn  btn-block btn-social btn-twitter" type="button">Twitter</button>
+            </div>
+            </div>*@
+
+            </div>
+            @*<div class="card-footer bg-white">
+                    <p>Already member? <a href="#" class="text-secondary">Login Here.</a></p>
+                </div>*@
+        </div>
+    }
+    @*</form>*@
+</body>
+
+
+</html>
+
+<script type="text/javascript">
+    //function Validate() {
+    //    // first clear any left over error messages
+    //    $('#error p').remove();
+
+    //    // store the error div, to save typing
+    //    var error = $('#error');
+
+    //    var idNumber = $('#MemberApplication_Idnum').val();
+
+
+    //    // assume everything is correct and if it later turns out not to be, just set this to false
+    //    var correct = true;
+
+    //    //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+    //    // SA ID Number have to be 13 digits, so check the length
+    //    if (idNumber.length != 13 || !isNumber(idNumber)) {
+    //        error.append('<p>ID number does not appear to be authentic - input not a valid number</p>');
+    //        correct = false;
+    //    }
+
+    //    // get first 6 digits as a valid date
+    //    var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+    //    var id_date = tempDate.getDate();
+    //    var id_month = tempDate.getMonth();
+    //    var id_year = tempDate.getFullYear();
+
+    //    var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+    //    if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+    //        error.append('<p>ID number does not appear to be authentic - date part not valid</p>');
+    //        correct = false;
+    //    }
+
+    //    // get the gender
+    //    var genderCode = idNumber.substring(6, 10);
+    //    var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+    //    // get country ID for citzenship
+    //    var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+    //    // apply Luhn formula for check-digits
+    //    var tempTotal = 0;
+    //    var checkSum = 0;
+    //    var multiplier = 1;
+    //    for (var i = 0; i < 13; ++i) {
+    //        tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+    //        if (tempTotal > 9) {
+    //            tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+    //        }
+    //        checkSum = checkSum + tempTotal;
+    //        multiplier = (multiplier % 2 == 0) ? 1 : 2;
+    //    }
+    //    if ((checkSum % 10) != 0) {
+    //        error.append('<p>ID number does not appear to be authentic - check digit is not valid</p>');
+    //        correct = false;
+    //    };
+
+    //    // if no error found, hide the error message
+    //    if (correct) {
+    //        error.css('display', 'none');
+
+    //        // clear the result div
+    //        //$('#result').empty();
+    //        // and put together a result message
+    //        //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+    //    }
+    //    // otherwise, show the error
+    //    else {
+    //        error.css('display', 'block');
+
+    //        return false;
+    //    }
+        
+    //}
+
+    function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    $('#RegisterApplicant').submit(Validate);
+</script>

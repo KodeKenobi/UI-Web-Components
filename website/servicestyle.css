@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap');
+
+:root {
+    --primary1: #1877F2;
+    --primary2: #F8E831;
+    --secondary1: #0c62d3;
+    --secondary2: #e9d70e;
+    --text1: #0A1931;
+    --text2: #ffffff;
+
+}
+
+
+::selection {
+    color: var(--text2);
+    background: var(--primary1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text1)
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header  */
+.bgtext {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 300px;
+    color: #2e79b618;
+    font-weight: 900;
+    user-select: none;
+    z-index: 5;
+}
+
+
+.left_box {
+    padding: 24px 44px;
+    margin-top: 140px;
+}
+
+.left_box h1 {
+    font-size: 48px;
+    line-height: 48*1.2px;
+    font-weight: 700;
+}
+
+.left_box p {
+    margin-top: 20px;
+    font-size: 19px;
+    line-height: 19*1.2px;
+    font-weight: 300;
+}
+
+.headerImage {
+    width: 80%;
+    height: auto;
+    margin: 18% 10% 4% 10%;
+}
+
+
+.book {
+    margin-top: 30px;
+    border: none;
+    border-radius: 50px;
+    width: 230px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--primary2);
+    color: var(--text1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book:hover {
+    background-color: var(--secondary2);
+    color: var(--text1);
+}
+
+
+
+/* Services header  */
+.servicetext {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+    padding: 12px 180px 0px 180px;
+    text-align: center;
+}
+
+.aboutHeading {
+    font-size: 52px;
+    text-align: center;
+    font-weight: 800;
+    margin: 48px 0px 0px 0px;
+    color: var(--primary1);
+}
+
+/* Services  */
+.serviceBox {
+    padding: 24px 44px;
+    margin-bottom: 22px;
+}
+
+.serviceBox h1 {
+    font-size: 54px;
+    line-height: 54*1.2px;
+    font-weight: 700;
+}
+
+.serviceBox p {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 300;
+}
+
+.serviceImg {
+    width: 86%;
+    height: auto;
+    margin: 6% 7% 6% 7%;
+}
+
+/* Services feature*/
+.feature {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.feature img {
+    height: 22px;
+    margin: 3px 8px 0px 0px;
+}
+
+.feature p {
+    text-align: left;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+}
+
+.dotbox {
+    position: relative;
+    overflow: hidden;
+
+}
+
+.dotbox .left {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .right {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .Tleft {
+    position: absolute;
+    left: -36px;
+    top: 4px;
+    height: 200px;
+    transform: rotate(48deg);
+    opacity: 0.4;
+}
+
+.dotbox .Tright {
+    position: absolute;
+    right: -40px;
+    top: 4px;
+    height: 200px;
+    transform: rotate(48deg);
+    opacity: 0.4;
+}
+
+.dotbox .Tcenter1 {
+    position: absolute;
+    left: 30%;
+    top: -6px;
+    height: 80px;
+    transform: rotate(-28deg);
+    opacity: 0.3;
+}
+
+.dotbox .Tcenter2 {
+    position: absolute;
+    right: 30%;
+    bottom: -16px;
+    height: 90px;
+    transform: rotate(20deg);
+    opacity: 0.3;
+}
+
+/* CTA  */
+
+.bookCta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 28px;
+    padding: 30px 0px;
+}
+
+.bookCta h3 {
+    font-size: 38px;
+    line-height:46px;
+    font-weight: 700;
+    padding: 0px 56px;
+    color: var(--text1);
+}
+
+.headertext a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book1 {
+    margin: 0 auto;
+    border: none;
+    border-radius: 50px;
+    width: 230px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--primary2);
+    color: var(--text1);
+}
+
+.book1:hover {
+    background-color: var(--secondary2);
+    color: var(--text1);
+}
+
+
+/*worked with*/
+
+.company_logo {
+    height: 74px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.workText {
+    padding: 8px 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    margin: 48px 36px 36px 36px;
+    color: var(--secondary1);
+}
+
+.subworkText{
+    padding: 4px 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin: 24px 18px 18px 18px ;
+    color: #334e7c;
+}
+
+.programmingLanguage{
+    height: 56px;
+    width: auto;
+}
+
+.aboutHead {
+    text-align: center;
+    padding: 0% 5% 1% 5%;
+
+}
+
+.aboutHead h1 span {
+    font-size: 54px;
+    line-height: 54*1.5px;
+    font-weight: 700;
+    letter-spacing: 0.002em;
+    color: var(--text1);
+    text-shadow: #0c62d3;
+}
+
+.underline {
+box-shadow: #e9d70e;
+}
+
+.bottomlogo1 img {
+    width: 32%;
+}
+
+@media (max-width: 947px) {
+
+    .book {
+        margin-top: 30px;
+        border: none;
+        width: 180px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        margin: 12px 0px;
+
+    }
+
+    .book1 {
+        border: none;
+        width: 180px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 6px;
+    }
+
+    .bgtext {
+        display: none;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .Tcenter1 {
+        display: none;
+    }
+
+    .Tcenter2 {
+        display: none;
+    }
+
+    .Tleft {
+        display: none;
+    }
+
+    .Tright {
+        display: none;
+    }
+
+    .aboutHeading {
+        padding: 20px 16px;
+        font-size: 36px;
+        margin: 44px 0px 0px 0px;
+    }
+
+    
+    .servicetext {
+        font-size: 17px;
+        line-height: 26px;
+        padding: 0px 16px 0px 16px;
+        text-align: center;
+        margin-bottom: -48px;
+    }
+
+    /* header */
+    .left_box {
+        padding: 0px 16px;
+        margin-top: 10px;
+    }
+
+
+    .headerImage {
+        width: 90%;
+        height: auto;
+        margin: 20% 5% 2% 5%;
+    }
+
+    .left_box h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .left_box p {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .bookCta h3 {
+        font-size: 24px;
+        line-height: 30px;
+        padding: 4px;
+
+    }
+
+    .bookCta {
+        margin-top: 0px;
+        padding: 16px;
+    }
+
+    /* header */
+    .serviceBox {
+        padding: 0px 16px;
+        margin-top: 16px;
+        margin-bottom: 0px;
+    }
+
+
+    .serviceImg {
+        width: 90%;
+        height: auto;
+        margin: 6% 5% 2% 5%;
+    }
+
+    .serviceBox h1 {
+        font-size: 28px;
+        line-height: 36px;
+
+    }
+
+    .serviceBox p {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+
+    .feature img {
+        height: 20px;
+        margin: 3px 8px 0px 0px;
+    }
+
+    .feature p {
+        text-align: left;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+
+    .company_logo {
+        height: 64px;
+        margin-top: 0px;
+    }
+
+    .programmingLanguage{
+        width: auto;
+        height: 36px;
+    }
+
+    .workText {
+        padding: 4px 6px;
+        font-weight: 700;
+        font-size: 26px;
+        margin: 16px;
+        text-align: center;
+    }
+    .subworkText{
+        padding: 4px 6px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        margin: 8px;
+        color: var(--text1);
+    }
+
+    .bottomlogo1 img {
+        width: 60%;
+    }
+
+    .bottomlogo img {
+        width: 60%;
+    }
+
+    .aboutHead {
+        padding: 20% 5% 4% 5%;
+
+    }
+
+    .aboutHead h1 span {
+        font-size: 32px;
+        line-height: 32*1.2px;
+    }
+
+    .book1 {
+        border: none;
+        width: 200px;
+        height: 42px;
+    }
+
+    .bookCta h3 {
+        font-size: 24px;
+        line-height: 30px;
+        padding: 4px;
+
+    }
+
+    .bookCta {
+        margin-top: 0px;
+        padding: 16px;
+    }
+}

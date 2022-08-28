@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\pibmtg</_PublishTargetUrl>
+    <History>True|2021-10-05T18:36:48.4764823Z;True|2021-10-05T20:29:45.0121504+02:00;False|2021-10-05T20:29:12.6458078+02:00;True|2021-10-05T20:23:52.3995814+02:00;False|2021-10-05T20:22:51.8606331+02:00;True|2021-10-05T20:15:12.3981766+02:00;False|2021-09-30T17:12:30.6703321+02:00;False|2021-09-30T17:09:42.5275388+02:00;False|2021-09-30T17:09:05.5148417+02:00;True|2021-09-30T16:37:31.7648805+02:00;False|2021-09-30T16:36:08.0769720+02:00;True|2021-09-30T16:34:08.0602798+02:00;True|2021-09-30T16:28:13.6269132+02:00;False|2021-09-30T16:01:17.5142553+02:00;True|2021-09-30T15:54:46.6718181+02:00;True|2021-09-30T15:04:22.6908899+02:00;True|2021-09-30T10:40:58.9335262+02:00;True|2021-09-25T23:27:38.6005280+02:00;False|2021-09-25T23:27:18.8516004+02:00;True|2021-09-25T23:26:06.9119959+02:00;False|2021-09-25T23:25:44.9449482+02:00;True|2021-09-23T15:03:43.1981562+02:00;False|2021-09-23T15:00:50.1650542+02:00;True|2021-09-21T16:51:32.6328307+02:00;False|2021-09-21T16:51:00.4079522+02:00;True|2021-09-14T09:44:44.4369340+02:00;False|2021-09-14T09:36:04.1659893+02:00;True|2021-09-14T09:10:24.3281279+02:00;False|2021-09-14T09:07:21.3946688+02:00;True|2021-09-06T15:50:17.5845837+02:00;False|2021-09-06T15:49:39.5257954+02:00;True|2021-09-06T11:31:07.1600899+02:00;False|2021-09-06T11:30:47.1979618+02:00;True|2021-09-06T10:58:15.9241961+02:00;False|2021-09-06T10:57:40.0047805+02:00;True|2021-09-06T10:09:04.3609304+02:00;False|2021-09-06T10:08:36.6473732+02:00;True|2021-09-06T09:36:07.2624232+02:00;False|2021-09-06T09:35:33.2568356+02:00;True|2021-09-04T11:15:10.7603228+02:00;False|2021-09-04T11:14:40.5033298+02:00;True|2021-09-04T11:11:23.7699041+02:00;False|2021-09-04T11:10:52.5539636+02:00;True|2021-09-04T11:08:30.8151697+02:00;False|2021-09-04T11:07:57.1369297+02:00;True|2021-09-04T09:56:37.0792393+02:00;False|2021-09-04T09:55:56.1402433+02:00;True|2021-09-03T17:13:04.2849749+02:00;False|2021-09-03T17:12:48.8401770+02:00;False|2021-09-03T17:12:31.3348554+02:00;False|2021-09-03T17:12:15.1973913+02:00;True|2021-09-03T01:22:47.9286947+02:00;False|2021-09-03T01:22:32.6500256+02:00;True|2021-09-02T09:32:38.5418237+02:00;False|2021-09-02T09:32:19.5896620+02:00;True|2021-09-01T13:17:49.6959145+02:00;False|2021-09-01T13:17:26.4731596+02:00;False|2021-09-01T13:17:10.8221712+02:00;False|2021-09-01T13:16:52.8840427+02:00;True|2021-09-01T09:57:19.5241400+02:00;False|2021-09-01T09:57:00.8968494+02:00;False|2021-09-01T09:56:45.8333838+02:00;False|2021-09-01T09:56:30.8260028+02:00;True|2021-08-30T16:21:56.1890749+02:00;False|2021-08-30T16:21:39.4590430+02:00;True|2021-08-30T10:50:58.4700059+02:00;False|2021-08-30T10:50:41.7429777+02:00;True|2021-08-27T12:14:15.4062528+02:00;False|2021-08-27T12:13:58.4279806+02:00;True|2021-08-26T14:58:33.3450376+02:00;False|2021-08-26T14:56:48.6204827+02:00;True|2021-08-26T14:12:33.3283334+02:00;False|2021-08-26T14:10:46.0388517+02:00;True|2021-08-26T14:09:49.5216976+02:00;False|2021-08-26T14:09:21.3076608+02:00;True|2021-08-26T13:16:27.8136900+02:00;False|2021-08-26T13:16:03.1580663+02:00;True|2021-08-25T14:36:38.9752657+02:00;False|2021-08-25T14:15:17.3519330+02:00;True|2021-08-25T09:43:16.1899187+02:00;True|2021-08-25T09:32:30.2099233+02:00;True|2021-08-24T21:24:47.3991508+02:00;True|2021-08-24T02:45:13.0853315+02:00;False|2021-08-24T02:41:45.2409769+02:00;False|2021-08-24T02:38:58.3068864+02:00;True|2021-08-24T02:11:16.1789812+02:00;</History>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Pages/Account/ConfirmEmail.cshtml">
+      <publishTime>07/23/2021 10:45:12</publishTime>
+    </File>
+    <File Include="Pages/Account/ConfirmEmail.cshtml.cs">
+      <publishTime>07/23/2021 09:43:37</publishTime>
+    </File>
+    <File Include="Pages/Account/Index.cshtml">
+      <publishTime>08/31/2021 10:20:47</publishTime>
+    </File>
+    <File Include="Pages/ApplicantRegistration/Index.cshtml">
+      <publishTime>08/27/2021 12:12:00</publishTime>
+    </File>
+    <File Include="Pages/Error.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/Error.cshtml.cs">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/HRManagement/Index.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/Index.cshtml">
+      <publishTime>09/01/2021 13:13:07</publishTime>
+    </File>
+    <File Include="Pages/Index.cshtml.cs">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/PMRBManagement/Index.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/ApplicationSubmitted.cshtml">
+      <publishTime>09/01/2021 13:13:52</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/Create.cshtml">
+      <publishTime>09/04/2021 00:17:45</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/Edit.cshtml">
+      <publishTime>09/01/2021 03:05:40</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/Index.cshtml">
+      <publishTime>07/23/2021 13:19:48</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/PolicyAccepted.cshtml">
+      <publishTime>09/04/2021 03:35:34</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/PolicyDeclined.cshtml">
+      <publishTime>09/02/2021 09:09:04</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/ReviewList.cshtml">
+      <publishTime>09/04/2021 09:51:05</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/VerifyPolicy.cshtml">
+      <publishTime>09/02/2021 09:29:22</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/_ChildrenDetails.cshtml">
+      <publishTime>07/26/2021 04:36:36</publishTime>
+    </File>
+    <File Include="Pages/PolicyApplication/_ExtendedFamilies.cshtml">
+      <publishTime>09/01/2021 22:12:59</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/AddRemoveChildren.cshtml">
+      <publishTime>08/13/2021 07:04:47</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/AddSpouse.cshtml">
+      <publishTime>08/13/2021 08:56:12</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/AmendContact.cshtml">
+      <publishTime>08/13/2021 07:06:40</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/ChangePaymentMethod.cshtml">
+      <publishTime>08/13/2021 07:07:24</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/ChangePremiumPayer.cshtml">
+      <publishTime>08/13/2021 08:46:19</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/Index.cshtml">
+      <publishTime>08/13/2021 09:04:22</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/PolicyCancelation.cshtml">
+      <publishTime>08/24/2021 23:17:27</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/PolicyCancellation.cshtml">
+      <publishTime>08/13/2021 07:08:30</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/PolicyList.cshtml">
+      <publishTime>09/03/2021 14:03:38</publishTime>
+    </File>
+    <File Include="Pages/PolicyManagement/UpgradePolicy.cshtml">
+      <publishTime>08/13/2021 07:09:05</publishTime>
+    </File>
+    <File Include="Pages/PreliminaryClientEngagement/CallMeSubmitted.cshtml">
+      <publishTime>08/20/2021 11:58:29</publishTime>
+    </File>
+    <File Include="Pages/PreliminaryClientEngagement/Index.cshtml">
+      <publishTime>08/19/2021 14:49:25</publishTime>
+    </File>
+    <File Include="Pages/PreliminaryClientEngagement/ListEngagements.cshtml">
+      <publishTime>08/25/2021 02:47:13</publishTime>
+    </File>
+    <File Include="Pages/PreliminaryClientEngagement/ViewClient.cshtml">
+      <publishTime>08/25/2021 03:03:57</publishTime>
+    </File>
+    <File Include="Pages/Privacy.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/Privacy.cshtml.cs">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/Shared/Error.cshtml">
+      <publishTime>07/23/2021 11:12:47</publishTime>
+    </File>
+    <File Include="Pages/Shared/_Layout.cshtml">
+      <publishTime>09/04/2021 11:03:21</publishTime>
+    </File>
+    <File Include="Pages/Shared/_LoginPartial.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/Shared/_NotificationPartial.cshtml">
+      <publishTime>08/20/2021 13:39:56</publishTime>
+    </File>
+    <File Include="Pages/Shared/_ValidationScriptsPartial.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/UserManagement/Create.cshtml">
+      <publishTime>07/23/2021 16:13:47</publishTime>
+    </File>
+    <File Include="Pages/UserManagement/Edit.cshtml">
+      <publishTime>07/14/2021 18:25:17</publishTime>
+    </File>
+    <File Include="Pages/UserManagement/Index.cshtml">
+      <publishTime>07/14/2021 15:18:54</publishTime>
+    </File>
+    <File Include="Pages/UserManagement/Roles.cshtml">
+      <publishTime>07/14/2021 17:58:48</publishTime>
+    </File>
+    <File Include="Pages/_ViewImports.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+    <File Include="Pages/_ViewStart.cshtml">
+      <publishTime>07/08/2021 07:55:27</publishTime>
+    </File>
+  </ItemGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DataConnection">
+      <Value>Server=MFU001_TRUSERVC%3bDatabase=BrkBase%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

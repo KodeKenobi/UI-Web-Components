@@ -1,0 +1,159 @@
+﻿@model PolicyManagementSystem.Controllers.Models.BaseViewModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>PIB MTG Policy Management System</p>
+    @if (User.IsInRole("Administrator") || User.IsInRole("Brokers"))
+    {
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- total followers   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Registered without policies</h5>
+                            <h2 class="mb-0"> 24,763</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end total followers   -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- partnerships   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Accepted Policies Today</h5>
+                            <h2 class="mb-0">14</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+                            <i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end partnerships   -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- total earned   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Average Premium</h5>
+                            <h2 class="mb-0"> R149.00</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
+                            <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end total earned   -->
+            <!-- ============================================================== -->
+        </div>
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- sales  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card border-3 border-top border-top-primary">
+                    <div class="card-body">
+                        <h5 class="text-muted">Sales</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">R12099</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5.86%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end sales  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- new customer  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card border-3 border-top border-top-primary">
+                    <div class="card-body">
+                        <h5 class="text-muted">New Customer</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">1245</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end new customer  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- visitor  -->
+            <!-- ============================================================== -->
+            @*<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card border-3 border-top border-top-primary">
+                        <div class="card-body">
+                            <h5 class="text-muted">Visitor</h5>
+                            <div class="metric-value d-inline-block">
+                                <h1 class="mb-1">13000</h1>
+                            </div>
+                            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- ============================================================== -->
+            <!-- end visitor  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- total orders  -->
+            <!-- ============================================================== -->
+            @*<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card border-3 border-top border-top-primary">
+                        <div class="card-body">
+                            <h5 class="text-muted">Total Orders</h5>
+                            <div class="metric-value d-inline-block">
+                                <h1 class="mb-1">1340</h1>
+                            </div>
+                            <div class="metric-label d-inline-block float-right text-danger font-weight-bold">
+                                <span class="icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light "><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">4%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- ============================================================== -->
+            <!-- end total orders  -->
+            <!-- ============================================================== -->
+        </div>
+    }
+    else
+    {
+        @if (!User.IsInRole("Verification officer "))
+        {
+            <p class="card-text">If you wish to apply for a policy, please click apply : <a asp-controller="PolicyApplication" asp-action="Create" class="btn btn-primary">Apply</a></p>
+
+        }
+    }
+
+</div>
+
+

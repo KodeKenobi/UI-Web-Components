@@ -1,0 +1,147 @@
+﻿@{
+
+}
+<!-- ============================================================== -->
+<!-- pageheader -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Management</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Amendments Allowed</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        @*<div class="card">*@
+        <h5 class="card-header">Amendments Allowed</h5>
+            @*<div class="card-body">*@
+                <div class="table-responsive">
+                    @*<a class="btn btn-primary btn-block" style="color:white" asp-controller="PolicyApplication" asp-action="Create">Create a policy</a>*@
+                    <br />
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">The new added contact details are verified before the request is lodged into the system. OTP Sent to cell number and emails</p>
+                                    <a asp-controller="PolicyManagement" asp-action="PolicyMembersEdit" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <b>Contact details</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p title="The policy owner creates a letter on the system which is stored in the system DB, agree to the terms and conditions, and sign the letter" class="card-text">The policy owner creates a letter on the system which is stored in the system DB, agree to the terms ...</p>
+                                    <a asp-controller="PolicyManagement" asp-action="PolicyCancellation" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <b>Policy cancellations</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">Add spouse information and other relevant information including the proof of marriage to the principal member</p>
+                                    <a asp-controller="PolicyManagement" asp-action="AddSpouse" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <b>Add a Spouse to policy</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">System updates the policy payments methods and new Premium’s payer once request has gone through the channels and is approved.</p>
+                                    <a asp-controller="PolicyManagement" asp-action="ChangePremiumPayer" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <b>Change of premium payer details</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">The policy owner creates a letter on the system which is stored in the system DB, agree to the terms and conditions, and sign the letter</p>
+                                    <a asp-controller="PolicyManagement" asp-action="AddRemoveChildren" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <b>Add or remove children</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p title="The policy owner or broker lodges the request. Cash – once verification officer has approved the change, the system updates policy method of payment. Debit order – policy owner completes the debit order form online and sign it. Stop order – policy owner or broker chooses any of the Stop order forms to make lodge the changes, stop order form, stop order increase, stop order reduce or stop order cancellation." class="card-text">
+                                        <b>Cash</b> – once verification officer has approved the change, the system updates policy method of payment. 
+                                        <b>Debit order</b> – policy owner completes the debit order form ...
+                                    </p>
+                                    <a asp-controller="PolicyManagement" asp-action="ChangePaymentMethod" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex">
+                                    <b>Change of Payment method</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Select the policy package, signs and submit the request. Once the changes are approved the old policy package is saved under policy history and shows the new upgrade
+                                    </p>
+                                    <a asp-controller="PolicyManagement" asp-action="UpgradePolicy" class="btn btn-primary">Amend</a>
+                                </div>
+                                <div class="card-footer d-flex ">
+                                    <b>Upgrade of policy</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        View all policy and search for the policy
+                                    </p>
+                                    <a asp-controller="PolicyManagement" asp-action="ViewPolicy" class="btn btn-primary">ViewPolicy</a>
+                                </div>
+                                <div class="card-footer d-flex ">
+                                    <b>View policy list</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @*</div>*@
+        @*</div>*@
+    </div>
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>

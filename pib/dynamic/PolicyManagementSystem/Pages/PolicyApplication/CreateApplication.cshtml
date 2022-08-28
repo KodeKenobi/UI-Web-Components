@@ -1,0 +1,99 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+@{
+
+}
+
+<style>
+    .clickedPlan {
+        filter: grayscale(100%);
+    }
+</style>
+
+<!-- ============================================================== -->
+<!-- pageheader -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Application</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Application</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Policy</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+   @using (Html.BeginForm("CreateApplication", "PolicyApplication", FormMethod.Post, new { @id = "CreatePolicy" }))
+    {
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+            </li>
+        </ul>
+     
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+            <div class="tab-content" id="myTabContent">
+                <div class="form-group pib">
+                    <label for="inputText3" class="col-form-label">Select Policy</label><br />
+                    @Html.DropDownListFor(x => x.CoverID, new SelectList(Model.PIBPolicies, "Value", "Text"), new { @class = "form-control", })
+                </div>
+                <div class="form-group mtg" style="display:none;">
+                    <label for="inputText3" class="col-form-label">Select Policy</label><br />
+
+                    @Html.DropDownListFor(x => x.MTGCoverID, new SelectList(Model.MTGPolicies, "Value", "Text"), new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Title</label><br />
+                    @Html.TextBoxFor(x => x.PrincipalMemberDetails.Title, new { @class = "form-control", placeholder = "Title" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">First Name</label><br />
+                    @Html.TextBoxFor(x => x.PrincipalMemberDetails.ContactPerson, new { @class = "form-control", placeholder = "First Name" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                    @Html.TextBoxFor(x => x.PrincipalMemberDetails.MiddleName, new { @class = "form-control", placeholder = "Maiden Name" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Surname</label><br />
+                    @Html.TextBoxFor(x => x.PrincipalMemberDetails.Surname, new { @class = "form-control", placeholder = "Surname" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">ID Number</label><br />
+                    Index1.cshtml                            @Html.TextBoxFor(x => x.PrincipalMemberDetails.Idnum, new { @class = "form-control IDNo", placeholder = "SA ID/Passport", @maxlength = "15" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Marital Status</label><br />
+                    @Html.DropDownListFor(x => x.PrincipalMemberDetails.MaritalStatus, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Married", Value = "Married" },
+                       new SelectListItem{ Text="Single", Value = "Single" },
+                       new SelectListItem{ Text="Widow", Value = "Widow" }
+                    }, new { @class = "form-control", @id = "ddlMaritalStatus" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Cell Number</label><br />
+                    @Html.TextBoxFor(x => x.PrincipalMemberDetails.ContactPhone, new { @class = "form-control", placeholder = "Cell Number" })
+                </div>
+            </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Something Else</div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+              
+            </div>
+            }
+        </div>

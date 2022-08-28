@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap');
+
+
+::selection {
+    color: var(--text2);
+    background: var(--primary1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text1)
+}
+html {
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*navbar1 style*/
+
+.navbar1 {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 5px 40px;
+    transition: all 0.3s ease;
+}
+
+.navbar1.sticky {
+    padding: 12px 40px 2px 40px;
+    background-color: var(--text2);
+    box-shadow: 10px -12px 65px 2px rgba(186, 200, 255, 0.54);
+
+}
+
+.navbar1 .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar1 .logo a {
+    color: var(--primary1);
+    font-size: 28px;
+    line-height: 12px;
+    font-weight: 700;
+}
+
+.navbar1 .menu li {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 14px;
+    font-weight: 500;
+
+}
+
+.navbar1 .menu li a {
+    display: block;
+    color: var(--text1);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding-top: 2px;
+    text-align: center;
+    margin: 0px 2px;
+}
+
+.menu-btn:hover {
+    color: var(--primary1);
+}
+
+.menu-btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: var(--primary1);
+    transition: all 300ms ease-out;
+}
+
+.menu-btn:hover::after {
+    width: 100%;
+}
+
+.navbar1.sticky .logo a {
+    color: var(--text1);
+}
+
+.navbar1.sticky .menu li a {
+    color: var(--text1);
+}
+
+.navbar1.sticky .menu li a:hover {
+    color: var(--secondary1);
+}
+
+.navbar1 .logo img{
+    width: 160px;
+}
+
+/* menu btn styling */
+.menu-btn {
+    color: var(--text1);
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+/* footer section styling */
+
+footer {
+    background: var(--text1);
+    padding: 0px 23px;
+    color: var(--text2);
+    text-align: center;
+    margin-top: 0px;
+    font-size: 16px;
+}
+
+footer span {
+    color: var(--text2);
+    text-decoration: none;
+}
+
+footer span a {
+    color: var(--text2);
+    text-decoration: none;
+}
+
+.Linkdin:focus {
+    box-shadow: none;
+}
+
+
+@media (max-width: 947px) {
+
+    .navbar1 {
+        padding: 8px 16px;
+    }
+
+    .navbar1.sticky {
+        padding: 8px 16px;
+    }
+    
+    .navbar1 .logo img{
+        width: 100px;
+        margin-left: -8px;
+    }
+
+    .navbar1 .logo a {
+        font-size: 22px;
+        line-height: 36px;
+    }
+
+    .navbar1 .menu li a {
+        color: var(--text1);
+        margin: 16px;
+    }
+
+    .menu-btn:hover::after {
+        width: auto;
+    }
+
+    .navbar1 .menu li a:hover {
+        color: var(--primary1);
+    }
+
+    .navbar1 .menu.active {
+        padding: 0px;
+        padding-top: 24%;
+    }
+
+    .navbar1.sticky .menu li a {
+        color: var(--text1);
+    }
+
+    .navbar1.sticky .menu li a:hover {
+        color: var(--primary1);
+    }
+
+    .menu-btn {
+        display: block;
+        z-index: 999;
+    }
+
+    .menu-btn i.active:before {
+        content: "\f00d";
+        color: var(--text1);
+    }
+
+    .navbar1 .menu {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: 100%;
+        top: 0;
+        background: var(--text2);
+        text-align: center;
+        padding-top: 0px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar1 .menu.active {
+        left: 0;
+    }
+
+    .navbar1 .menu li {
+        display: block
+    }
+
+    .navbar1 .menu li a {
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 25px;
+    }
+
+}

@@ -1,0 +1,33 @@
+#signatureCanvas
+{
+	background-color: #fff;
+}
+
+#btnClear
+{
+	float: right;
+	width: 88px;
+	cursor: pointer;
+	height: 32px;
+	border: solid 2px #cacaca;
+	background-color: #636363;
+}
+
+#btnAccept
+{
+	float: left;
+	width: 88px;
+	height: 32px;
+	border: solid 2px #fff;
+	background-color: #ff6600;
+}
+
+.signatureArea {
+	width: 300px;
+	color: #000000;
+}
+
+.signatureArea div
+{
+	padding-left: 60px;
+}

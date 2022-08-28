@@ -1,0 +1,326 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+@{
+
+}
+<!-- ============================================================== -->
+<!-- pageheader -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Management</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Amendments Allowed</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+    @using (Html.BeginForm("Create", "PolicyManagement", FormMethod.Post))
+    {
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Change Premium Member</h5>
+                <div class="card-body" style="width: 1040px;">
+                    <div class="table-responsive">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
+                            <div class="tab-regular">
+                                <ul class="nav nav-tabs " id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="home" aria-selected="true">Premium Payer Details</a>
+                                    </li>
+                                    @*<li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="profile" aria-selected="false">Principal Member Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="contact" aria-selected="false">Family Details</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="profile" aria-selected="false">Banking Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab6" role="tab" aria-controls="contact" aria-selected="false">Compliance</a>
+                                    </li>*@
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.MemberProposer.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.MemberProposer.Surname, new { @class = "form-control", placeholder = "Surname" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.MemberProposer.Idnum, new { @class = "form-control", placeholder = "SA ID/Passport" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.MemberProposer.ContactPhone, new { @class = "form-control", placeholder = "Cell number" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.MemberProposer.WorkPhone, new { @class = "form-control", placeholder = "Telephone(w)" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Postal Address</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Address1, new { @class = "form-control", placeholder = "Address Line 1" })<br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Address2, new { @class = "form-control", placeholder = "Address Line 2" })<br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Address3, new { @class = "form-control", placeholder = "Address Line 3" })<br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.PostalCode, new { @class = "form-control", placeholder = "Postal Code" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.MemberProposer.ContactEmail, new { @class = "form-control", placeholder = "Email" })<br />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Relationship to Principal Member</label><br />
+                                            @Html.DropDownListFor(x => x.MemberProposer.RelationToPrincipalMember, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Mother", Value = "Mother" },
+                                               new SelectListItem{ Text="Father", Value = "Father" },
+                                               new SelectListItem{ Text="Mother-In-Law", Value = "Mother-In-Law" },
+                                               new SelectListItem{ Text="Father-In-Law", Value = "Father-In-Law" },
+                                               new SelectListItem{ Text="Child", Value = "Child" },
+                                               new SelectListItem{ Text="Other(Specify)", Value = "Other(Specify)" }
+                                            }, new { @class = "form-control" })<br />
+                                            @Html.TextBoxFor(x => x.RelationOther, new { @class = "form-control", placeholder = "Other(Specify)" })
+                                        </div>
+                                        <a href="#" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Amend</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.PrincipalMemberDetails.Title, new { @class = "form-control", placeholder = "Title" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.PrincipalMemberDetails.ContactPerson, new { @class = "form-control", placeholder = "Full Names" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.PrincipalMemberDetails.Idnum, new { @class = "form-control", placeholder = "SA ID/Passport" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Marital Status</label><br />
+                                            @Html.DropDownListFor(x => x.PrincipalMemberDetails.MaritalStatus, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Married", Value = "Married" },
+                                               new SelectListItem{ Text="Single", Value = "Single" },
+                                               new SelectListItem{ Text="Widow", Value = "Widow" }
+                                            }, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.PrincipalMemberDetails.ContactPhone, new { @class = "form-control", placeholder = "Cell Number" })
+                                        </div>
+                                        @*<a href="#" class="btn btn-secondary" style="background-color: #4656e9!important; border-color:none!important">Next</a>*@
+                                    </div>
+                                    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="contact-tab">
+                                        <h3>Spouse Details(if Marital status chosen is married )  </h3>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.SpouseDetails.ContactPerson, new { @class = "form-control", placeholder = "Full Names" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.SpouseDetails.Idnum, new { @class = "form-control", placeholder = "Identity No." })
+                                        </div>
+                                        <h3>Children's Details   </h3>
+                                        <span>
+                                            How many children :
+                                            <select id="noChildren">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                            </select>
+                                        </span>
+                                        <div id="childrenContainer">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.ChildrenDetails[0].ContactPerson, new { @class = "form-control", placeholder = "Full Names" })
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.ChildrenDetails[0].Idnum, new { @class = "form-control", placeholder = "Identify No." })
+                                            </div>
+                                        </div>
+
+                                        <h3>Extended Families and wider children of the principal member</h3>
+                                        <span>
+                                            How many siblings :
+                                            <select id="noSiblings">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                                <option value="6">Six</option>
+                                                <option value="7">Seven</option>
+                                                <option value="8">Eight</option>
+                                                <option value="9">Nine</option>
+                                                <option value="10">Ten</option>
+                                            </select>
+                                        </span>
+                                        <div id="extendedFamiliesContainer">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.ExtendedFamilies[0].ContactPerson, new { @class = "form-control", placeholder = "Full Names" })
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.ExtendedFamilies[0].Idnum, new { @class = "form-control", placeholder = "Identity No." })
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.ExtendedFamilies[0].InsInterest, new { @class = "form-control", placeholder = "Relationship" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Cover / Premium(in Rands)</label><br />
+                                            @Html.DropDownListFor(x => x.CoverID, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Bronze (Cover R5 000) / Premium R16", Value = "13" },
+                                               new SelectListItem{ Text="Executive (Cover R30 000) / Premium R120", Value = "76" },
+                                               new SelectListItem{ Text="VIP (Cover R20 000) / Premium R90", Value = "70" },
+                                               new SelectListItem{ Text="Dignity (Cover R15 000) / Premium R75", Value = "64" },
+                                               new SelectListItem{ Text="Silver (Cover R10 000) / Premium R65", Value = "58" },
+                                               new SelectListItem{ Text="Standard (Cover R7 500) / Premium R50", Value = "50" },
+                                               new SelectListItem{ Text="New (Cover R50 000) / Premium R150", Value = "45" },
+                                               new SelectListItem{ Text="Titanium (Cover R40 000) / Premium R120", Value = "40" },
+                                               new SelectListItem{ Text="Diamond (Cover R30 000) / Premium R85", Value = "35" },
+                                               new SelectListItem{ Text="Platinum (Cover R20 000) / Premium R65", Value = "30" },
+                                               new SelectListItem{ Text="Gold (Cover R15 000) / Premium R40", Value = "25" },
+                                               new SelectListItem{ Text="Silver (Cover R10 000) / Premium R32", Value = "20" }
+                                            }, new { @class = "form-control" })
+                                        </div>
+                                        <h3>Beneficiary Nomination( I hereby nominate the following person who is my dependant or nominee, for any benefits due to be paid in the event of my death.  </h3>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Beneficiary.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Beneficiary.Surname, new { @class = "form-control", placeholder = "Surname" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Beneficiary.Idnum, new { @class = "form-control", placeholder = "Identity No." })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Beneficiary.Alias, new { @class = "form-control", placeholder = "Relationship" })
+                                        </div>
+                                        @*<a href="#tab5" class="btn btn-secondary" style="background-color: #4656e9!important; border-color:none!important">Next</a>*@
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="profile-tab">
+                                        <h3>Payment Details </h3>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Mode of payment</label><br />
+                                            @Html.DropDownListFor(x => x.Banking.CollectType, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Cash", Value = "CSH" },
+                                               new SelectListItem{ Text="Stop Order", Value = "S/O" },
+                                               new SelectListItem{ Text="Debit Order", Value = "D/O" }
+                                            }, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Frequency</label><br />
+                                            @Html.DropDownListFor(x => x.Banking.CollectFreq, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Monthly", Value = "1" },
+                                               new SelectListItem{ Text="Half Yearly", Value = "6" },
+                                               new SelectListItem{ Text="Yearly", Value = "12" }
+                                            }, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Policy commencement date</label><br />
+                                            @Html.TextBoxFor(x => x.Banking.CollectStart, new { @class = "form-control datepicker", placeholder = "YYYY-MM-DD" })
+                                        </div>
+                                        <h3>Banking Details </h3>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Banking.DoBankName, new { @class = "form-control", placeholder = "Name of Bank" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Banking.DoBranchCode, new { @class = "form-control", placeholder = "Branch code" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Banking.DoBranchName, new { @class = "form-control", placeholder = "Branch" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Banking.DoAccNum, new { @class = "form-control", placeholder = "Account Number" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Banking.CollectSurname, new { @class = "form-control", placeholder = "Name of Account Holder" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Account Type</label><br />
+                                            @Html.DropDownListFor(x => x.Banking.DoAccType, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Cheque", Value = "CHQ" },
+                                               new SelectListItem{ Text="Savings", Value = "SAV" },
+                                               new SelectListItem{ Text="Transmission", Value = "TRA" }
+                                            }, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Debit order date</label><br />
+                                            @Html.DropDownListFor(x => x.Banking.DoDebitDay, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="05th", Value = "5" },
+                                               new SelectListItem{ Text="07th", Value = "7" },
+                                               new SelectListItem{ Text="15th", Value = "15" },
+                                               new SelectListItem{ Text="22nd", Value = "22" },
+                                               new SelectListItem{ Text="25th", Value = "25" },
+                                               new SelectListItem{ Text="27th", Value = "27" },
+                                               new SelectListItem{ Text="Last day of the month", Value = "0" }
+                                            }, new { @class = "form-control" })
+                                        </div>
+                                        @*<a href="#tab6" class="btn btn-secondary" style="background-color: #4656e9!important; border-color:none!important">Next</a>*@
+                                    </div>
+                                    <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="contact-tab">
+                                        <h3>Default (stacked)</h3>
+                                        <div>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" checked="" class="custom-control-input"><span class="custom-control-label">Default Checkbox</span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">INTERMEDIARY STATUS </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">ADVICE </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">WAITING PERIODS </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">DEBIT ORDER </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">RIGHTS RESERVED </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">EXCLUSIONS </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">CLAIMS PROCEDURE </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">POLICY REPLACEMENT </span>
+                                            </label>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">APPLICATION STAGE </span>
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>

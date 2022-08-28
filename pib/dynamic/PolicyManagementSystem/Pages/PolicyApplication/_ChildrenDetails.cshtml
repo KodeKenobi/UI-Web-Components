@@ -1,0 +1,22 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+
+@for (int i = 0; i < Model.MembersCount; i++)
+{
+    <span><i>Child no. @(i + 1)</i></span>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">First Name</label><br />
+        @Html.TextBoxFor(x => x.ChildrenDetails[0].ContactPerson, new { @class = "form-control", placeholder = "First Name" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+        @Html.TextBoxFor(x => x.ChildrenDetails[0].MiddleName, new { @class = "form-control", placeholder = "Maiden Name" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">Surname</label><br />
+        @Html.TextBoxFor(x => x.ChildrenDetails[0].Surname, new { @class = "form-control", placeholder = "Surname" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">ID Number</label><br />
+        @Html.TextBoxFor(x => x.ChildrenDetails[0].Idnum, new { @class = "form-control", placeholder = "ID Number", @maxlength = "15" })
+    </div>
+}

@@ -1,0 +1,64 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+
+@for (int i = 0; i < Model.MembersCount; i++)
+{
+    <span><i>Family member no. @(i + 1)</i></span>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">First Name</label><br />
+        @Html.TextBoxFor(x => x.ExtendedFamilies[0].ContactPerson, new { @class = "form-control", placeholder = "First Name" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+        @Html.TextBoxFor(x => x.ExtendedFamilies[0].MiddleName, new { @class = "form-control", placeholder = "Maiden Name" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">Surname</label><br />
+        @Html.TextBoxFor(x => x.ExtendedFamilies[0].Surname, new { @class = "form-control", placeholder = "Surname" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">ID Number</label><br />
+        @Html.TextBoxFor(x => x.ExtendedFamilies[0].Idnum, new { @class = "form-control", placeholder = "ID Number", @maxlength = "15" })
+    </div>
+    <div class="form-group">
+        <label for="inputText3" class="col-form-label">Relationship</label><br />
+        @Html.TextBoxFor(x => x.ExtendedFamilies[0].InsRef, new { @class = "form-control", placeholder = "Relationship" })
+    </div>
+    <div class="form-group pib">
+        <label for="inputText3" class="col-form-label">Cover / Premium(in Rands)</label><br />
+        @Html.DropDownListFor(x => x.ExtendedFamilies[0].CoverId, new List<SelectListItem>
+        {
+            new SelectListItem{ Text="N/A", Value = "N/A" },
+           new SelectListItem{ Text="Bronze (Cover R5 000) / Premium R16", Value = "13" },
+           //new SelectListItem{ Text="Executive (Cover R30 000) / Premium R120", Value = "76" },
+           //new SelectListItem{ Text="VIP (Cover R20 000) / Premium R90", Value = "70" },
+           //new SelectListItem{ Text="Dignity (Cover R15 000) / Premium R75", Value = "64" },
+           new SelectListItem{ Text="Silver (Cover R10 000) / Premium R65", Value = "58" },
+           //new SelectListItem{ Text="Standard (Cover R7 500) / Premium R50", Value = "50" },
+           //new SelectListItem{ Text="New (Cover R50 000) / Premium R150", Value = "45" },
+           new SelectListItem{ Text="Titanium (Cover R40 000) / Premium R120", Value = "40" },
+           new SelectListItem{ Text="Diamond (Cover R30 000) / Premium R85", Value = "35" },
+           new SelectListItem{ Text="Platinum (Cover R20 000) / Premium R65", Value = "30" },
+           new SelectListItem{ Text="Gold (Cover R15 000) / Premium R40", Value = "25" },
+           //new SelectListItem{ Text="Silver (Cover R10 000) / Premium R32", Value = "20" }
+        }, new { @class = "form-control" })
+    </div>
+    <div class="form-group mtg" style="display:none;">
+        <label for="inputText3" class="col-form-label">Cover / Premium(in Rands)</label><br />
+        @Html.DropDownListFor(x => x.ExtendedFamilies[0].CoverId, new List<SelectListItem>
+        {
+            new SelectListItem{ Text="N/A", Value = "N/A" },
+           //new SelectListItem{ Text="Bronze (Cover R5 000) / Premium R16", Value = "13" },
+           new SelectListItem{ Text="Executive (Cover R30 000) / Premium R120", Value = "76" },
+           new SelectListItem{ Text="VIP (Cover R20 000) / Premium R90", Value = "70" },
+           new SelectListItem{ Text="Dignity (Cover R15 000) / Premium R75", Value = "64" },
+           //new SelectListItem{ Text="Silver (Cover R10 000) / Premium R65", Value = "58" },
+           new SelectListItem{ Text="Standard (Cover R7 500) / Premium R50", Value = "50" },
+           new SelectListItem{ Text="New (Cover R50 000) / Premium R150", Value = "45" },
+           //new SelectListItem{ Text="Titanium (Cover R40 000) / Premium R120", Value = "40" },
+           //new SelectListItem{ Text="Diamond (Cover R30 000) / Premium R85", Value = "35" },
+           //new SelectListItem{ Text="Platinum (Cover R20 000) / Premium R65", Value = "30" },
+           //new SelectListItem{ Text="Gold (Cover R15 000) / Premium R40", Value = "25" },
+           new SelectListItem{ Text="Silver (Cover R10 000) / Premium R32", Value = "20" }
+        }, new { @class = "form-control" })
+    </div>
+}

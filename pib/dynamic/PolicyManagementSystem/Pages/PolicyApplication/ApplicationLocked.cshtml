@@ -1,0 +1,45 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Application</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Application</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Application Locked</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <!-- ============================================================== -->
+        <!-- overview -->
+        <!-- ============================================================== -->
+        <div class="page-section" id="overview">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h2>Policy Application Locked</h2>
+                    <p class="lead">Sorry!! You you can't review the application now as its in : @Model.MemberProposer.Status.</p>
+                    <br />
+                    
+                    @*<ul class="list-unstyled arrow">
+                            <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Mauris bibendum massa ut porttitor congue.</li>
+                            <li>Morbi condimentum magna eget facilisis accumsan.</li>
+                            <li>Proin euismod eros nec libero efficitur, a dapibus mauris condimentum. </li>
+                        </ul>*@
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end overview -->
+        <!-- ============================================================== -->
+    </div>
+</div>

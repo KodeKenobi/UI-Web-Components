@@ -1,0 +1,120 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyManagementViewModel
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Management</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Existing Policies</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Premium Members</h5>
+            <div class="card-body">
+                <div id="example4_filter" class="dataTables_filter">
+                    <form action="ViewPolicy" method="post">
+                        <input type="search" id="txtSearch" class="form-control form-control-sm" placeholder="Search" name="searchValue" aria-controls="example4">
+                        <input type="submit" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important" value="Search">
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Surname</th>
+                                <th>Contact Phone</th>
+                                <th>Contact Email</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var member in Model.MemberProposerList)
+                            {
+                            <tr>
+                                <td>@member.FirstName</td>
+                                <td>@member.Surname</td>
+                                <td>@member.ContactPhone</td>
+                                <td>@member.ContactEmail</td>
+                                <td>@member.Status</td>
+                                <td><a class="btn btn-primary btn-block" style="color:white" asp-route-id="@member.MemPropKey" asp-controller="PolicyManagement" asp-action="Edit">Ammend</a></td>
+                            </tr>
+                            }
+                        </tbody>
+                        @*<tfoot>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Surname</th>
+                                <th>Contact Phone</th>
+                                <th>Contact Email</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>*@
+                    </table>
+                </div>
+                <br />
+                <div class="col-sm-12 col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                        <ul class="pagination">
+                            @*<li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>*@
+
+                            @for (int i = 1; i < 20; i++)
+                            {
+                                <li class="paginate_button page-item @(i == Model.CurrentPage ? "active" : "")"><a asp-route-currentPage="@i" asp-controller="PolicyManagement" asp-action="PolicyList" aria-controls="DataTables_Table_0" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Search button clicked
+        $("#btnSearch").click(function () {
+            var searchText = $('#txtName').val();
+            var currentPage = $('#hdnCurrentPage').val();
+
+            if (searchText != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "/JQueryAjaxCall/AjaxPostCall",
+                    data: JSON.stringify(employee),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response != null) {
+                            alert("Name : " + response.Name + ", Designation : " + response.Designation + ", Location :" + response.Location);
+                        } else {
+                            alert("Something went wrong");
+                        }
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+        });
+
+    })
+</script>

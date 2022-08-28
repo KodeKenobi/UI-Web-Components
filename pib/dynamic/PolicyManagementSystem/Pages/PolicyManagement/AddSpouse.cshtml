@@ -1,0 +1,76 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+@{
+
+}
+<!-- ============================================================== -->
+<!-- pageheader -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Management</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Amendments Allowed</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+    @using (Html.BeginForm("Create", "PolicyManagement", FormMethod.Post))
+    {
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Add Spouse</h5>
+                <div class="card-body" style="width: 1040px;">
+                    <div class="table-responsive">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
+                            <div class="tab-regular">
+                                <ul class="nav nav-tabs " id="myTab" role="tablist">
+                                   
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="contact" aria-selected="false">Spouse Details</a>
+                                        </li>
+
+                                 
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                  
+                                    <div class="tab-pane fade show active" id="tab3" role="tabpanel" aria-labelledby="contact-tab">
+                                       
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.SpouseDetails.ContactPerson, new { @class = "form-control", placeholder = "Full Names" })
+                                        </div>
+  
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.SpouseDetails.Surname, new { @class = "form-control", placeholder = "Surname"})
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.SpouseDetails.Idnum, new { @class = "form-control", placeholder = "Identity No." })
+                                        </div>
+
+                                        <a href="#tab5" class="btn btn-secondary" style="background-color: #4656e9!important; border-color:none!important">Amend</a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>

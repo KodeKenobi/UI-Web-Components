@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap');
+
+:root {
+    --primary1: #1877F2;
+    --primary2: #F8E831;
+    --secondary1: #0c62d3;
+    --secondary2: #e9d70e;
+    --text1: #0A1931;
+    --text2: #ffffff;
+
+}
+
+
+::selection {
+    color: var(--text2);
+    background: var(--primary1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--text1)
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* *Header style*/
+
+.bgtext {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 260px;
+    color: #2e79b618;
+    font-weight: 700;
+    user-select: none;
+}
+
+.left_box {
+    padding: 18px 44px;
+    margin-top: 140px;
+}
+
+.left_box h1 {
+    font-size: 72px;
+    line-height: 72px;
+    font-weight: 700;
+}
+
+.left_box p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+    width: 72%;
+}
+
+.headerImage {
+    width: 76%;
+    height: auto;
+    margin: 22% 12% 4% 12%;
+}
+
+
+.aboutHead {
+    padding: 7% 5% 1% 5%;
+    text-align: center;
+
+}
+.aboutText {
+    text-align: center;
+}
+
+
+
+.aboutHead h1 span {
+    font-size: 180px;
+    line-height: 180*1.5px;
+    font-weight: 700;
+    letter-spacing: 0.002em;
+    color: var(--text1);
+}
+.aboutText p{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 300;
+}
+
+.underline {
+    background-image: linear-gradient(120deg, #F8E831 100%, #F8E831 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+
+}
+
+.left {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.right {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    height: 140px;
+}
+
+.bookCta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 28px;
+    padding: 30px 0px;
+}
+
+.dotbox {
+    position: relative;
+    overflow: hidden;
+
+}
+
+.dotbox .left {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .right {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .Tleft {
+    position: absolute;
+    left: -36px;
+    top: 4px;
+    height: 200px;
+    transform: rotate(48deg);
+    opacity: 0.4;
+}
+
+.dotbox .Tright {
+    position: absolute;
+    right: -40px;
+    top: 4px;
+    height: 200px;
+    transform: rotate(48deg);
+    opacity: 0.4;
+}
+
+.dotbox .Tcenter1 {
+    position: absolute;
+    left: 30%;
+    top: -6px;
+    height: 80px;
+    transform: rotate(-28deg);
+    opacity: 0.3;
+}
+
+.dotbox .Tcenter2 {
+    position: absolute;
+    right: 30%;
+    bottom: -16px;
+    height: 90px;
+    transform: rotate(20deg);
+    opacity: 0.3;
+}
+
+/* CTA  */
+
+.bookCta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 28px;
+    padding: 30px 0px;
+}
+
+.bookCta h3 {
+    font-size: 38px;
+    line-height:46px;
+    font-weight: 700;
+    padding: 0px 56px;
+    color: var(--text1);
+}
+
+.headertext a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book {
+    margin: 0 auto;
+    border: none;
+    border-radius: 50px;
+    width: 230px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--primary2);
+    color: var(--text1);
+}
+
+.book:hover {
+    background-color: var(--secondary2);
+    color: var(--text1);
+}
+
+.blogbox {
+    transform: translateX(0);
+    transition: all ease 0.5s;
+    background-color: var(--text2);
+    width: 320px;
+    margin: 28px auto;
+    padding: 0 0 8px 0;
+    box-shadow: 4px 7px 30px 7px rgb(0,0,0,6%);
+}
+.blogbox:hover{
+    transform: translateY(-10px);
+    transition: all ease 0.5s;
+
+}
+
+.blogtop {
+    height: auto; 
+}
+
+.blogtop img{
+    width: 100%;
+}
+.blogbody{
+    height: 130px;
+    margin: 0 0 18px 0;padding: 0 7px;
+
+}
+
+.bloghead {
+    height: 48px;
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+}
+.bloghead h1{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16*1.5px;
+    margin: 0px 5px;
+}
+.blogcontent{
+    margin: 0 0 25px 0;
+}
+
+.blogcontent p{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 300;
+    margin: 0px 5px;
+
+}
+
+
+
+
+.blogend {
+    height: 24px;
+    margin: 0px 5px 5px 5px;
+    padding: 0 7px;
+}
+.blogAuthor img{
+    border-radius: 50%;
+}
+.blogAuthor p{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 300;
+    margin: 0 0 0 10px;
+}
+.blogdate{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 300;
+}
+
+
+
+
+
+@media (max-width: 947px) {
+
+    .aboutHead {
+        padding: 28% 5% 1% 5%;    
+    }
+    
+       
+    .aboutHead h1 span {
+        font-size: 64px;
+        line-height: 64*1.5px;
+    }
+    .aboutText p{
+        font-size: 17px;
+        line-height: 26px;
+    }
+
+    .book {
+        border: none;
+        width: 180px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 6px;
+    }
+
+
+    .bgtext {
+        display: none;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .Tcenter1 {
+        display: none;
+    }
+
+    .Tcenter2 {
+        display: none;
+    }
+
+    .Tleft {
+        display: none;
+    }
+
+    .Tright {
+        display: none;
+    }
+
+
+
+    .bookCta h3 {
+        font-size: 28px;
+        line-height: 38px;
+        padding: 4px;
+
+    }
+
+    .bookCta {
+        margin-top: 0px;
+        padding: 16px;
+    }
+    /* header */
+    .left_box {
+        padding: 0px 16px;
+        margin-top: 10px;
+    }
+
+
+    .headerImage {
+        width: 90%;
+        height: auto;
+        margin: 20% 5% 2% 5%;
+    }
+
+    .left_box h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .left_box p {
+        font-size: 16px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+
+
+}

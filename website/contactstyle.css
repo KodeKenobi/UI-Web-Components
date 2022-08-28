@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap');
+
+:root {
+    --primary1: #1877F2;
+    --primary2: #F8E831;
+    --secondary1: #0c62d3;
+    --secondary2: #e9d70e;
+    --text1: #0A1931;
+    --text2: #ffffff;
+
+}
+
+
+::selection {
+    color: var(--text2);
+    background: var(--primary1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text1)
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.dotbox {
+    position: relative;
+    overflow: hidden;
+
+}
+
+.dotbox .left {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .right {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+
+.sectionHeading {
+    padding: 36px 16px 14px 16px;
+    font-size: 44px;
+    text-align: center;
+    font-weight: 700;
+    margin: 6% 0px 0px 0px;
+    color: var(--primary1);
+}
+
+
+
+/* Header  */
+.bgtext {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 300px;
+    color: #2e79b618;
+    font-weight: 900;
+    user-select: none;
+    z-index: 5;
+}
+
+
+.left_box {
+    padding: 18px 44px;
+    margin-top: 140px;
+}
+
+.left_box h1 {
+    font-size: 72px;
+    line-height: 72px;
+    font-weight: 700;
+}
+
+.left_box p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+    width: 72%;
+}
+
+.headerImage {
+    width: 96%;
+    height: auto;
+    margin: 22% 2% 4% 2%;
+}
+
+
+
+/* Contact  */
+
+.sectionText {
+    font-size: 17px;
+    line-height: 28px;
+    padding: 0px 160px 0px 160px;
+    text-align: center;
+}
+
+.details i {
+    font-size: 22px;
+    padding: 6px;
+    margin: 0px 16px 0px 0px;
+    color: var(--primary1);
+}
+
+.details {
+    display: flex;
+    width: 70%;
+    margin: 36px 40px 20px 40px;
+}
+
+.details .head {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+.details .sub-title {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+}
+
+input {
+    width: 100%;
+    height: 44px;
+    margin: 5px 0;
+}
+
+textarea {
+    width: 100%;
+    margin: 5px 0;
+}
+
+select {
+    width: 100%;
+    height: 44px;
+    margin: 5px 0;
+}
+
+.contactInput,
+.selectinput,
+.messageinput {
+    border-color: #d1d5db;
+    color: #707172;
+}
+
+.contactInput:focus,
+.selectinput:focus,
+.messageinput:focus {
+    box-shadow: none;
+    border-color: var(--text1);
+    color: var(--text1);
+}
+
+.submit {
+    margin-top: 24px;
+    border: none;
+    border-radius: 50px;
+    width: 200px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--primary1);
+    color: var(--text2);
+    margin: 18px 0px 6px 12px;
+}
+
+.submit:hover {
+    background-color: var(--secondary1);
+}
+
+.aboutHead {
+    text-align: center;
+    padding: 7% 5% 1% 5%;
+
+}
+
+.aboutHead h1 span {
+    font-size: 78px;
+    line-height: 78*1.5px;
+    font-weight: 700;
+    letter-spacing: 0.002em;
+    color: var(--text1);
+}
+
+.underline {
+    background-image: linear-gradient(120deg, #F8E831 100%, #F8E831 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+
+}
+
+
+
+@media (max-width: 947px) {
+
+    /* header */
+    .left_box {
+        padding: 0px 16px;
+        margin-top: 10px;
+    }
+
+
+    .headerImage {
+        width: 90%;
+        height: auto;
+        margin: 20% 5% 2% 5%;
+    }
+
+    .left_box h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .left_box p {
+        font-size: 16px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .sectionHeading {
+        padding: 30px 16px;
+        font-size: 36px;
+        text-align: center;
+        font-weight: 700;
+        margin: 50px 0px 0px 0px;
+    }
+
+    .sectionText {
+        font-size: 15px;
+        line-height: 25px;
+        padding: 0px 16px 0px 16px;
+    }
+
+    .details {
+        width: 100%;
+        margin: 0px;
+        padding: 14px 16px;
+    }
+
+    .details i {
+        font-size: 20px;
+        padding: 6px;
+    }
+
+    .details .head {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .details .sub-title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .contactform {
+        margin-right: 0px;
+    }
+
+    .contactform .contactInput,
+    .contactform .selectinput,
+    .contactform .messageinput {
+        margin: 0px 16px;
+        padding: 5px 16px;
+        width: 94%;
+    }
+
+    .submit {
+        margin: 20px 0px 6px 30px;
+    }
+    .aboutHead {
+        padding: 20% 5% 4% 5%;
+
+    }
+
+    .aboutHead h1 span {
+        font-size: 32px;
+        line-height: 32*1.2px;
+    }
+
+}

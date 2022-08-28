@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="blogstyle1.css">
+    <link rel="stylesheet" type="text/css" href="../navstyle.css">
+    <!-- <link rel="icon" href="Assets/titleicon.png" type="image/x-icon"> -->
+
+    <!-- DON'T TOUCH ABOVE THINGS-->
+
+    <!-- always add hypen between two words in title-->
+    <title>AWS-Lambda-Tutorial-for-Beginners:-Complete-Tutorial</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar1 sticky">
+        <div class="max-width">
+            <div class="logo"><a href="#"><img src="../Assets/logo.png"></a></div>
+            <ul class="menu">
+                <li><a href="#Home" class="menu-btn">Home</a></li>
+                <li><a href="../about.html" class="menu-btn">About</a></li>
+                <li><a href="../service.html" class="menu-btn">Services</a></li>
+                <li><a href="../training.html" class="menu-btn">Training</a></li>
+                <li><a href="../blog.html" class="menu-btn">Blog</a></li>
+                <li><a href="../contact.html" class="menu-btn">Contact</a></li>
+            </ul>
+            <div class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog -->
+    
+    <div class="container-fluid" style="background-color: #ffffff;" id="Blog">
+        <div class="row" style="position: relative;">
+            <div class="blogHead" style="z-index:20;">
+
+                <!-- TITLE  -->
+                <h1><span class="title underline">AWS Lambda Tutorial for Beginners: Complete Tutorial
+            </div>
+            <div class="col-12" style="z-index:20;">
+                <div class="blogBody">
+                    <p>With the development of cloud technology, AWS Lambda has become the most widely used serverless architecture. One of the examples of cloud service providers that have been using the AWS platform is Netflix. The article will discuss the AWS Lambda.</p>
+
+                    <p>The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code. That’s all that is required to be paid by the user. The code submitted can access any other services of AWS or can also run by itself.</p>
+
+                    <p>One of the powers that AWS Lambda offers is scalability. AWS will scale the code for the user. However, it depends on how many requests it receives. If you are more interested in learning about AWS Lambda, the article best suits you. We are going to discuss the various concepts associated with architecture.</p>
+
+
+                    <h2>
+                       AWS Lambda
+                    </h2>
+                    <p>The AWS Lambda is a platform provided as a part of the Amazon web services (AWS) by Amazon. It is a computing platform that is serverless. The computing platform runs any code that is in response to the events. It then automatically manages all the resources that are required by the code to run. Amazon introduced the serverless platform in 2014 November.</p>
+
+                    <p>The users who use the platform create functions and any self-contained applications through one of the languages supported by the platform. The functions are then uploaded to the AWS Lambda and executed by the platform efficiently. The officially supporting languages of AWS Lambda are Python, Java, Ruby, Node.js, Go, and C#. The functions of Lambda are capable of performing any computing task such as web page service, processing data streams to the API, and integrating the functions to other services of the AWS.</p>
+
+                    <p>One of the benefits of having a serverless platform is that there is no requirement to maintain the servers by yourself to run the created functions. The platform of AWS is fully managed and will do all the services for you. It also manages the infrastructure for the users. Therefore, through the serverless term, it doesn’t mean that no servers are present. However, it means that the operating systems, servers, and the infrastructure associated with the server is all maintained, and the users need to focus only on writing the codes.</p>
+
+                    <h2>Working of the AWS Lambda</h2>
+                    <h3>AWS Lambda functions in the following manner</h3>
+                    <ul class="list">
+                        <li>Every Lambda function runs inside its own space. After the creation of a function, it is packaged by Lambda into a container.</li>
+                        <li>The container is then executed on a cluster of machines that are managed by the service of AWS.</li>
+                        <li>Before running the function, the container for every function is allocated a RAM necessary to run it and the CPU’s capacity.</li>
+                        <li>Once execution of the function stops, the RAM, which was allocated at the start of running the function, is multiplied by the time required for running itself.</li>
+                        <li>This is how the charges are decided for the customers. It is based on the allocated memory and the run time required for completely running the code.</li>
+                    </ul>
+
+                    <p>Amazon Web Services manages the whole infrastructure of the computing platform. There is, however, no visibility to the customers as to the operation of the system. But, there is no need for them to worry regarding the system update, failure in network connectivity, etc., as AWS itself manages everything.</p>
+
+                    <p>Also, because AWS manages the whole service, the users save a lot of time for other operational tasks. Also, because there is no need to maintain the infrastructure, the users can develop the application’s code.</p>
+
+                    <p>Another important property of the AWS architecture is that the users can run different instances of the same function in the same account of AWS. Also, different instances from different functions can be executed from the same account.</p>
+
+                    <p><b style="font-weight: 600;">There are many AWS Lambda tutorials available on the internet that will give you an idea of the working of the AWS architecture.</b></p>
+                    
+                    <h2>AWS: An Essential Part of Serverless Computing</h2>
+                    <h3>For completing a serverless slack, the requirements are:</h3>
+                    <ul class="list">
+                        <li>Computing service</li>
+                        <li>Service of a database</li>
+                        <li>Gateway service such as an HTTP</li>
+                    </ul>
+                    <p>The primary requirement of AWS, which is the computing service, is filled in by Lambda. It also integrates with other services of AWS along with the API gateway such as RDS and DynamoDB. All of this together is considered the basis for serverless solutions for the users using AWS. Also, for many serverless developers, Lambda seems to be a good fit as it supports a wide variety of runtimes and languages.</p>
+
+                    <h2>Advantages of the AWS Lambda</h2>
+                    <p>There are a few advantages that the AWS Lambda provides over the other servers that are maintained in the cloud. </p>
+
+                    <h3>1. Pay per use</h3>
+                    <p>This is one of the biggest advantages that the architecture of AWS provides. In the AWS Lambda; we need to pay only for the time required to compute the tasks. Also, in addition to this, if sometimes there is any generation of network traffic. Because of this, the architecture of AWS is considered to be cost-effective.</p>
+
+                    <h3>2. Fully managed infrastructure</h3>
+                    <p>The infrastructures of AWS where the customers run the functions are all managed by the AWS. The customers don’t have to think about the servers that are working behind the architecture. For the benefit of the customers, the management is done by the AWS itself. Therefore, it results in a lot of saving as no operational tasks are required by the customer, such as updating the operating system or managing the network layers.</p>
+
+                    <h3>3. Automatic scaling</h3>
+                    <p>Instances of the functions are automatically created as requested in the AWS.</p>
+
+                    <h3>4. Integration with other services in the AWS</h3>
+                    <p>Services such as DynamDB, API gateway, S3 are allowed to integrate with the AWS Lambda.</p>
+
+                    <p>Because of all these advantages that the architecture provides, it has been used for many different tasks. Below are some of the tasks that are done through the use of AWS Lambda. The traditional system of cloud computing is left behind with the benefits provided by the AWS platform. <b style="font-weight: 600;">Different tasks that can be performed over the traditional system of cloud computing are:</b></p>
+
+                    <ul class="list">
+                        <li>The tasks run for a shorter duration of time compared to the traditional cloud computing system.</li>
+                        <li>The tasks are mostly self-contained.</li>
+                    </ul>
+
+                    <h4>A few of the cases of the common use of API are:</h4>
+                    <ul class="list">
+                        <li><b style="font-weight: 600;">Scalable API:</b>While building an API through using the AWS Lambda, a single request of HTTP can be served by a single execution of the function of Lambda. The API gateway of amazon can route the different API parts with the Lambda functions. Individual functions are automatically scaled through the AWS function as per the demand. Therefore, different API parts can scale as per the usage level. As a result, effective setups of API can be done, which are also flexible. <b style="font-weight: 600;">AWS API gateway tutorial </b>will help in the understanding of the concepts in more detail.</li>
+                        <li><b style="font-weight: 600;">Data processing: </b>The functions of Lambda are optimized for event-based data processing.</li>
+                    </ul>
+
+                    <h2>Programming Languages Supported by AWS</h2>
+                    <p>A lot of popular languages are supported by the AWS platform.<b style="font-weight: 600;"> Below is the list of the languages that are being supported by the platform:</b></p>
+                    <ul class="list">
+                        <li>Node.js 8.10
+                            <li>Node.js 10.x</li>
+                            <li>Node.js 12.x</li>
+                            <li>Python 2.7</li>
+                            <li>Python 3.6</li>
+                            <li>Python 3.7</li>
+                            <li>Python 3.8</li>
+                            <li>Ruby 2.5</li>
+                            <li>Java 8</li>
+                            <li>Java 11</li>
+                            <li>Go 1.x</li>
+                            <li>C# — .NET Core 1.0</li>
+                            <li>C# — .NET Core 2.1</li>
+                            <li>PowerShell Core 6.0</li>
+                    </ul>
+
+                    <p>AWS is involved in maintaining these runtimes, which are provided in an environment of Amazon Linux 2 or Amazon Linux. In addition, an SDK is provided by AWS for every language that it supports. This makes the user comfortable and finds it easy to write the functions of Lambda and then integrate with the other services from AWS.</p>
+
+                    <h2>AWS Lambda Tutorial</h2>
+
+                    <h3>1. Account of AWS</h3>
+                    <p>This is the first thing that needs to be created for creating the Lambda function.</p>
+
+                    <h3>2. Creating a Lambda</h3>
+                    <p>The function can be set up once the customer is in the console. The “Lambda” entry under the menu “compute” is to be used. </p>
+
+                    <h3>3. Finishing the Lambda creation</h3>
+                    <p>Python programming is used for entering the code in the console.</p>
+
+                    <h3>4. Configuration of the function</h3>
+                    <p>The function has to be generated.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>AWS architecture is used to carry out the activities such as operational and administrative on behalf of the customers. A lot of benefits are offered by the AWS platforms, which are discussed in the article. Also, there are a lot of uses provided by AWS Lambda, such as the operation of the websites, which are serverless; conversion of the documents rapidly; backend cleaning; processing the objects of S3 that are uploaded; and many others. Examples for AWS Lambda include Netflix, Localytics, REA group, and many others. With these advantages, the use of AWS Lambda has been increased over enterprises in the whole world. It is one of the most versatile technologies that range from the core platforms of cloud computing to legacy applications. A whole lot of opportunities lie ahead in the use of AWS computing services.</p>
+
+
+                    
+                   
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container-fluid dotbox" style="background-color: #F0F2F5;">
+            <img src="../Assets/traingle.png" class="Tright">
+            <img src="../Assets/traingle.png" class="Tleft">
+            <img src="../Assets/calendar.png" class="Tcenter1">
+            <img src="../Assets/calendar.png" class="Tcenter2">
+
+            <div class="row bookCta">
+                <div class="col-lg-8 mt-2" style="z-index: 10;">
+                    <!-- Text for Cta  -->
+                    <h3>We believe in your vision of Secure Data Migration</h3>
+                </div>
+                <div class="col-lg-4 headertext" style="z-index: 10;">
+                    <a href="https://calendly.com/MfundoPedia/30min" target="_blank" class="book">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- footer section start -->
+    <footer>
+        <span><a class="btn Linkdin" href="https://www.linkedin.com/in/rajendra-mehta/" target="_blank">
+                <span class="fab fa-linkedin" style="font-size: 20px;"></span></a><span class="far fa-copyright"></span>
+            2022 All rights reserved.</span>
+    </footer>
+
+    <!-- Owl Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script src="navscript.js"></script>
+    <!-- <script src="typing.js"></script> -->
+</body>
+
+</html>

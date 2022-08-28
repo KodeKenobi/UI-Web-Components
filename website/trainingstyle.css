@@ -1,0 +1,644 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap');
+
+:root {
+    --primary1: #1877F2;
+    --primary2: #F8E831;
+    --secondary1: #0c62d3;
+    --secondary2: #e9d70e;
+    --text1: #0A1931;
+    --text2: #ffffff;
+
+}
+
+
+::selection {
+    color: var(--text2);
+    background: var(--primary1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text1)
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.dotbox {
+    position: relative;
+    overflow: hidden;
+
+}
+
+.dotbox .left {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .right {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    height: 120px;
+}
+
+.dotbox .Tleft {
+    position: absolute;
+    left: -36px;
+    top: 4px;
+    height: 200px;
+    transform: rotate(48deg);
+    opacity: 0.4;
+}
+
+.dotbox .Tright {
+    position: absolute;
+    right: -40px;
+    top: 4px;
+    height: 200px;
+    transform: rotate(48deg);
+    opacity: 0.4;
+}
+
+.dotbox .Tcenter1 {
+    position: absolute;
+    left: 30%;
+    top: -6px;
+    height: 80px;
+    transform: rotate(-28deg);
+    opacity: 0.3;
+}
+
+.dotbox .Tcenter2 {
+    position: absolute;
+    right: 30%;
+    bottom: -16px;
+    height: 90px;
+    transform: rotate(20deg);
+    opacity: 0.3;
+}
+.bookCta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 28px;
+    padding: 30px 0px;
+}
+
+.bookCta h3 {
+    font-size: 38px;
+    line-height: 46px;
+    font-weight: 700;
+    padding: 0px 56px;
+    color: var(--text1);
+}
+.sectionHeading {
+    padding: 36px 16px 14px 16px;
+    font-size: 44px;
+    line-height: 58px;
+    text-align: center;
+    font-weight: 700;
+    margin: 4% 0px 0px 0px;
+    color: var(--primary1);
+}
+
+.sectionText {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+
+/* Header  */
+.bgtext {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 300px;
+    color: #2e79b618;
+    font-weight: 900;
+    user-select: none;
+    z-index: 5;
+}
+
+
+.left_box {
+    padding: 18px 44px;
+    margin-top: 140px;
+}
+
+.left_box h1 {
+    font-size: 58px;
+    line-height: 62px;
+    font-weight: 700;
+}
+
+.left_box p {
+    margin: 24px 0px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+    width: 74%;
+    margin-bottom: 38px;
+}
+
+.headerImage {
+    width: 74%;
+    height: auto;
+    margin: 15% 13% 4% 13%;
+}
+
+
+.book {
+    margin-top: 56px;
+    border: none;
+    border-radius: 50px;
+    width: 200px;
+    height: 48px;
+    padding: 12px 44px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--primary1);
+    color: var(--text2)
+}
+
+.book:hover {
+    background-color: var(--secondary1);
+    color: var(--text2);
+}
+
+
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+}
+
+.ourNumber h1 {
+    text-align: center;
+    font-size: 64px;
+    line-height: 26px;
+    font-weight: 700;
+    margin: 12% 0% 6% 0%;
+}
+
+.ourNumber p {
+    font-size: 17px;
+    line-height: 28px;
+    font-weight: 500;
+}
+
+.unique {
+    text-align: center;
+    padding: 0px 28px;
+    background-color: #F0F2F5;
+    box-shadow: 7px 7px 30px 0 rgb(240, 242, 245 / 15%);
+
+    width: 500px;
+    margin-bottom: 48px;
+}
+
+.unique img {
+    width: 80px;
+    margin: 16px 0px 4px 0px;
+}
+
+.unique h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 4% 0%;
+}
+
+.unique p {
+    font-size: 17px;
+    line-height: 26px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.whyUsBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.whyBox {
+    padding: 16px;
+    text-align: center;
+    width: 320px;
+    background-color: #F0F2F5;
+    margin: 34px 18px;
+}
+
+.whyBox img {
+    width: 80px;
+    margin: 16px 0px 4px 0px;
+}
+
+.whyBox h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 4% 0% 1% 0%;
+}
+
+.whyBox p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.whyBox:hover {
+    background-color: var(--primary1);
+}
+
+.whyBox:hover h1,
+.whyBox:hover p {
+    color: var(--text2);
+}
+
+.whyBox:hover img {
+    filter: brightness(0) invert(1);
+
+}
+
+
+.topicBox {
+    width: 320px;
+    position: relative;
+    border-radius: 12px;
+    padding: 8px;
+    height: 460px;
+    margin: 36px;
+    box-shadow: 7px 7px 30px 0 rgb(0, 0, 0, 10%);
+}
+
+.cardTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 12px 12px 0 0;
+    height: 160px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardBody {
+    position: absolute;
+    top: 160px;
+    left: 0;
+    border-radius: 0 0 12px 12px;
+    height: 300px;
+    width: 100%;
+}
+
+.cardTop img {
+    width: 110px;
+    padding: 10px;
+}
+
+.cardTop h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.cardBody div {
+    width: calc(100% - 18px);
+    margin-left: 9px;
+    height: 49px;
+    line-height: 49px;
+    padding: 12px 12px;
+    box-shadow: 0 1px #d5d5d5;
+}
+
+.cardBody div:last-child {
+    box-shadow: none;
+}
+
+.cardBody div:hover {
+    cursor: pointer;
+    background-color: #f8f8f8;
+}
+
+.cardBody div p {
+    float: left;
+    font-size: 16px;
+    line-height: 25px;
+
+}
+
+.cardBody span {
+    float: right;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.rotate1 {
+    transform: rotateY(180deg);
+    transition: all 0.5s;
+}
+
+.rotate2 {
+    transform: rotateY(-180deg);
+    transition: all 0.5s;
+}
+
+
+
+.company_logo {
+    height: 17px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.programmingLanguage {
+    height: 56px;
+    width: auto;
+}
+
+.PathHeading {
+    padding: 8px 16px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: var(--text1);
+}
+
+.pathBox {
+    padding: 16px 16px 0px 16px;
+    text-align: center;
+    width: 336px;
+    height: 300px;
+    background-color: var(--text2);
+    box-shadow: 7px 7px 30px 0px rgb(0, 0, 0, 7%);
+    margin: 18px 18px;
+}
+
+.pathBox img {
+    width: 44px;
+    height: 44px;
+    margin: 0px 6px 0px 0px;
+}
+
+.pathTop {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+}
+
+.pathBody {
+    margin: 24px 0px 8px 0px;
+}
+
+.pathContent {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    text-align: left;
+    margin: 10px 0px;
+}
+
+.pathTop h1 {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin: 0px 6px 0px 6px;
+}
+
+.pathTop img {
+    width: 44px;
+    height: 44px;
+    margin: 0px 6px 0px 0px;
+}
+
+.pathContent p {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0px 6px 0px 18px;
+}
+
+.pathContent i {
+    font-size: 16px;
+    padding-left: 6px;
+    line-height: 20px;
+    margin: 0px 6px 0px 6px;
+    color: var(--primary1);
+
+}
+
+
+
+@media (max-width: 947px) {
+
+    /* header */
+    .left_box {
+        padding: 0px 16px;
+        margin: 10px 0px 14px 0px;
+    }
+
+
+    .headerImage {
+        width: 90%;
+        height: auto;
+        margin: 20% 5% 2% 5%;
+    }
+
+    .left_box h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .left_box p {
+        font-size: 16px;
+        margin: 12px 0px 28px 0px;
+        width: 100%;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .right {
+        display: none;
+    }
+
+
+    .Tcenter1 {
+        display: none;
+    }
+
+    .Tcenter2 {
+        display: none;
+    }
+
+    .Tleft {
+        display: none;
+    }
+
+    .Tright {
+        display: none;
+    }
+
+    .bookCta h3 {
+        font-size: 24px;
+        line-height: 30px;
+        padding: 4px;
+
+    }
+
+    .bookCta {
+        margin-top: 0px;
+        padding: 16px;
+    }
+
+    .book {
+        margin-top: 30px;
+        border: none;
+        width: 180px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        margin: 8px 0px 12px 0px;
+
+    }
+
+    .company_logo {
+        height: 64px;
+        margin-top: 0px;
+    }
+
+    .programmingLanguage {
+        width: auto;
+        height: 36px;
+    }
+
+    .ourNumber h1 {
+        font-size: 44px;
+        line-height: 24px;
+    }
+
+    .ourNumber p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .sectionHeading {
+        padding: 24px 12px;
+        font-size: 30px;
+        line-height: 40px;
+        margin: 0;
+    }
+    .longsection{
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .sectionText {
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 400;
+        width: 96%;
+        margin: 0 auto;
+    }
+
+    .unique {
+        text-align: center;
+        padding: 0px 16px;
+        background-color: #F0F2F5;
+        box-shadow: 7px 7px 30px 0 rgb(240, 242, 245 / 15%);
+        width: 330px;
+        margin-bottom: 28px;
+    }
+    
+    .unique img {
+        width: 56px;
+        margin: 12px 0px 2px 0px;
+    }
+    
+    .unique h2 {
+        font-size: 28px;
+        font-weight: 700;
+    }
+    
+    .unique p {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 500;
+        text-align: left;
+    }
+
+    .whyBox {
+        padding: 12px;
+        margin: 24px 16px;
+    }
+
+    .PathHeading {
+        font-weight: 700;
+        font-size: 28px;
+    }
+    
+    .pathBox {
+        width: 336px;
+        height: 274px;
+        margin: 18px 18px;
+    }
+    
+  
+
+    
+    .pathTop h1 {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    
+    .pathTop img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .pathContent p {
+        font-size: 15px;
+        line-height: 18px;
+    }
+    
+    .pathContent i {
+        font-size: 15px;        line-height: 18px;
+    }
+    
+    
+}

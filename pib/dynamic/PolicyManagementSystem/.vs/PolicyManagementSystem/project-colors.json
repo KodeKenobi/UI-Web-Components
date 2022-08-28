@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "58c88fa1-b1e9-4730-9f43-64f8b58d0d3e": {
+      "ProjectGuid": "58c88fa1-b1e9-4730-9f43-64f8b58d0d3e",
+      "DisplayName": "PolicyManagementSystem",
+      "ColorIndex": 0
+    },
+    "4163b78a-1e8d-4c48-9ffe-88fb5b6358ca": {
+      "ProjectGuid": "4163b78a-1e8d-4c48-9ffe-88fb5b6358ca",
+      "DisplayName": "PolicyManagementDataAccess",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "25b0dcd8-b0eb-45fa-960b-9bac3f0b0cad": {
+      "ProjectGuid": "25b0dcd8-b0eb-45fa-960b-9bac3f0b0cad",
+      "DisplayName": "PolicyManagementMailer",
+      "ColorIndex": 2
+    },
+    "1ada5166-8ded-4d49-95a0-ca3e9be99fa0": {
+      "ProjectGuid": "1ada5166-8ded-4d49-95a0-ca3e9be99fa0",
+      "DisplayName": "PolicyManagementModels",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -1,0 +1,87 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+
+}
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">User Management</h2>
+                <p class="pageheader-text"></p>
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">User Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Roles and Privileges</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Roles and Privileges</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first">
+                        <thead>
+                            <tr>
+                                <th>Roles</th>
+                                <th>Privileges</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Administrator</td>
+                                <td>Add users, update premium rates and benefits, update terms and conditions, update performance metrics</td>
+                            </tr>
+                            <tr>
+                                <td>Brokers</td>
+                                <td>Create applications, validate policy applications, view applications records, view performances  </td>
+                            </tr>
+                            <tr>
+                                <td>Verification officer </td>
+                                <td>Verify and approve policy applications, verify and approve policy changes </td>
+                            </tr>
+                            <tr>
+                                <td>Sales Manager </td>
+                                <td>View brokers records, create broker’s reports, create branch reports</td>
+                            </tr>
+                            <tr>
+                                <td>Chief Operating Officer</td>
+                                <td>Review branch reports, review performance reports</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Director</td>
+                                <td>Review performance reports, review brokers reports, authorise policy rates and benefits, Authorise policy terms and conditions </td>
+                            </tr>
+                            <tr>
+                                <td>Human Resource Assistant and Manager</td>
+                                <td>Review brokers records, review brokers performances, pay commissions</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Roles</th>
+                                <th>Privileges</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>

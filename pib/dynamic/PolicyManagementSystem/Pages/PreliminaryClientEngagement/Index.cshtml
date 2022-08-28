@@ -1,0 +1,139 @@
+﻿@model PolicyManagementSystem.Controllers.Models.ClientEngagementViewModel
+@{
+    Layout = null;
+}
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PIB MTG Applicant Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="~/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/libs/css/style.css">
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () { // will trigger when the document is ready
+                $('.datepicker').datepicker(); //Initialise any date pickers
+            });
+        })
+    </script>
+</head>
+<!-- ============================================================== -->
+<!-- signup form  -->
+<!-- ============================================================== -->
+
+<body>
+    <!-- ============================================================== -->
+    <!-- signup form  -->
+    <!-- ============================================================== -->
+    @*<form class="splash-container">*@
+    @using (Html.BeginForm("Create", "PreliminaryClientEngagement", FormMethod.Post, new { @class = "splash-container" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header text-center" style="border-bottom: none;"><a href="#"><img class="logo-img" src="~/assets/images/logo.jpeg" alt="logo"><img class="logo-img" style="width: 130px; height: 70px;" src="~/assets/images/MTGlogo.png" alt="logo"></a></div>
+                <h3 class="mb-1" style="text-align: center;">Enter your contact details</h3>
+                @*<p>Please enter your user information.</p>*@
+            </div>
+            <div class="card-body">
+
+                <div class="form-group">
+                    @Html.TextBoxFor(x => x.CallMeBack.FullName, new { @class = "form-control form-control-lg", required = "", placeholder = "Full Name" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(x => x.CallMeBack.LastName, new { @class = "form-control form-control-lg", required = "", placeholder = "Last Name" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(x => x.CallMeBack.MobileNumber, new { @class = "form-control form-control-lg", required = "", placeholder = "Mobile Number" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(x => x.CallMeBack.Email, new { @class = "form-control form-control-lg", required = "", placeholder = "Email" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Province</label><br />
+                    @Html.DropDownListFor(x => x.CallMeBack.Province, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Eastern Cape", Value = "Eastern Cape" },
+                       new SelectListItem{ Text="Gauteng", Value = "Gauteng" },
+                       new SelectListItem{ Text="KwaZulu-Natal", Value = "KwaZulu-Natal" },
+                       new SelectListItem{ Text="Limpopo", Value = "Limpopo" },
+                       new SelectListItem{ Text="Mpumalanga", Value = "Mpumalanga" },
+                       new SelectListItem{ Text="Northern Cape", Value = "Northern Cape" },
+                       new SelectListItem{ Text="North West", Value = "North West" },
+                       new SelectListItem{ Text="Free State", Value = "Free State" }
+                    }, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Nearest Branch</label><br />
+                    @Html.DropDownListFor(x => x.CallMeBack.NearestBranch, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Tshilamba Mutale", Value = "Tshilamba Mutale" },
+                       new SelectListItem{ Text="Thohoyandou", Value = "Thohoyandou" },
+                       new SelectListItem{ Text="Thavhani Mall", Value = "Thavhani Mall" },
+                       new SelectListItem{ Text="Giyani", Value = "Giyani" },
+                       new SelectListItem{ Text="Makhado", Value = "Makhado" },
+                       new SelectListItem{ Text="Musina", Value = "Musina" },
+                       new SelectListItem{ Text="Johannesburg", Value = "Johannesburg" },
+                       new SelectListItem{ Text="Sibasa", Value = "Sibasa" },
+                       new SelectListItem{ Text="Polokwane", Value = "Polokwane" }
+                    }, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="inputText3" class="col-form-label">Product</label><br />
+                    @Html.DropDownListFor(x => x.CallMeBack.Product, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="PIB", Value = "PIB" },
+                       new SelectListItem{ Text="MTG", Value = "MTG" }
+                    }, new { @class = "form-control" })
+                </div>
+                <div class="form-group pt-2">
+                    <button class="btn btn-block btn-primary" type="submit">Call Me Back</button>
+                </div>
+                @*<div class="form-group">
+                        <label class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a></span>
+                        </label>
+                    </div>
+                    <div class="form-group row pt-0">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                            <button class="btn btn-block btn-social btn-facebook " type="button">Facebook</button>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <button class="btn  btn-block btn-social btn-twitter" type="button">Twitter</button>
+                        </div>
+                        </div>*@
+
+            </div>
+            @*<div class="card-footer bg-white">
+                    <p>Already member? <a href="#" class="text-secondary">Login Here.</a></p>
+                </div>*@
+        </div>
+    }
+    @*</form>*@
+</body>
+
+
+</html>

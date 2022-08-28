@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <!-- OwlCarousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- Owl CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+    <!-- Owl CSS Ends -->
+
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="blogstyle.css">
+    <link rel="stylesheet" type="text/css" href="navstyle.css">
+    <!-- <link rel="icon" href="Assets/titleicon.png" type="image/x-icon"> -->
+    <title>MfundoPedia</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar1 sticky">
+        <div class="max-width">
+            <div class="logo"><a href="#"><img src="Assets/logo.png"></a></div>
+            <ul class="menu">
+                <li><a href="/#Home" class="menu-btn">Home</a></li>
+                <li><a href="about.html" class="menu-btn">About</a></li>
+                <li><a href="service.html" class="menu-btn">Services</a></li>
+                <li><a href="training.html" class="menu-btn">Training</a></li>
+                <li><a href="blog.html" class="menu-btn">Blog</a></li>
+                <li><a href="contact.html" class="menu-btn">Contact</a></li>
+
+            </ul>
+            <div class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <div class="container-fluid" id="home">
+        <div class="row flex-column-reverse flex-md-row" style="position: relative;">
+            <div class="col-lg-6 col-md-6" style="z-index:20;">
+                <div class="left_box">
+                    <h1>
+                        What does success mean to you?
+                    </h1>
+                    <p>
+                        We believe improving professional capability is the first step towards success. Explore our
+                        blogs and learn something new to push your limits every day.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-6" style="z-index:20;">
+                <img src="Assets/bloghead.png" class="headerImage">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+             <!-- BLOG CARD -->
+             <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/5-Systems-Programming-Project-Ideas.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>5 Systems Programming Project Ideas</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>Ever wondered how Windows, MacOS, or Linux work under the hood? You could try creating your own Operating System! Be warned, creating your own OS....</p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/stdProfile.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Prajwal Gunjikar</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 08, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BLOG CARD -->
+            <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>The AWS Lambda allows the running of code without the requirement of creating the code,
+                                managing it, or in fact, paying for running the code. </p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/stdProfile.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Rajendra Mehta</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 10, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG CARD -->
+            <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>The AWS Lambda allows the running of code without the requirement of creating the code,
+                                managing it, or in fact, paying for running the code. </p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/rajendramehta.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Rajendra Mehta</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 10, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG CARD -->
+            <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>The AWS Lambda allows the running of code without the requirement of creating the code,
+                                managing it, or in fact, paying for running the code. </p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/rajendramehta.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Rajendra Mehta</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 10, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG CARD -->
+            <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>The AWS Lambda allows the running of code without the requirement of creating the code,
+                                managing it, or in fact, paying for running the code. </p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/rajendramehta.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Rajendra Mehta</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 10, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG CARD -->
+            <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>The AWS Lambda allows the running of code without the requirement of creating the code,
+                                managing it, or in fact, paying for running the code. </p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/rajendramehta.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Rajendra Mehta</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 10, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG CARD -->
+            <div class="col-lg-4">
+                <!-- on single inverted comma add the link of file in blog folder -->
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');"
+                    style="cursor: pointer;">
+                    <div class="blogtop">
+                        <!-- add blog header image -->
+                        <img src="Blog/blogImage/blog-4.png" alt="">
+                    </div>
+                    <div class="blogbody">
+                        <div class="bloghead">
+                            <!-- add blog title here 2 lines-->
+                            <h1>AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                        </div>
+                        <div class="blogcontent">
+                            <!-- add blog description here 4 lines -->
+                            <p>The AWS Lambda allows the running of code without the requirement of creating the code,
+                                managing it, or in fact, paying for running the code. </p>
+                        </div>
+
+                    </div>
+                    <div class="blogend d-flex justify-content-between">
+                        <div class="blogAuthor d-flex">
+                            <!-- blog author image -->
+                            <img src="Blog/blogImage/rajendramehta.png" alt="">
+                            <!-- blog auhtor name -->
+                            <p>by Rajendra Mehta</p>
+                        </div>
+                        <div class="blogdate">
+                            <!-- date of blog publish  in same format as it writter here-->
+                            <p>Dec 10, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+    <!-- <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blogbox" onclick="window.open('blog/aws-lambda-tutorial-for-beginners.html','mywindow');" style="cursor: pointer;">
+                    <div class="blogtop">
+                        <span class="blogdate">OCTOBER 12, 2022</span>
+                        <span class="blogtag">Clou Computing</span>
+                    </div>
+                    <div class="bloghead">
+                        <h1 class="blogheading">AWS Lambda Tutorial for Beginners: Complete Tutorial</h1>
+                    </div>
+                    <div class="blogend">
+                        <p class="blogcontent">The AWS Lambda allows the running of code without the requirement of creating the code, managing it, or in fact, paying for running the code. The user must submit the code for running the function and has to pay for the time AWS takes to run the code.</p>
+                    </div>
+                    <a class="connect blogmore d-flex justify-content-left" href="blog/aws-lambda-tutorial-for-beginners.html"
+                        target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div> -->
+
+
+    <!-- CTA -->
+    <section class="cta mt-5" style="background-color: #F0F2F5">
+        <div class="container-fluid dotbox">
+            <img src="Assets/traingle.png" class="Tright">
+            <img src="Assets/traingle.png" class="Tleft">
+            <img src="Assets/calendar.png" class="Tcenter1">
+            <img src="Assets/calendar.png" class="Tcenter2">
+
+            <div class="row bookCta">
+                <div class="col-lg-8 mt-2" style="z-index: 10;">
+                    <h3>We believe in your vision of Secure Data Migration</h3>
+                </div>
+                <div class="col-lg-4 headertext" style="z-index: 10;">
+                    <a href="https://calendly.com/MfundoPedia/30min" target="_blank" class="book">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- footer section start -->
+    <footer>
+        <span><a class="btn Linkdin" href="https://www.linkedin.com/in/rajendra-mehta/" target="_blank">
+                <span class="fab fa-linkedin" style="font-size: 20px;"></span></a><span class="far fa-copyright"></span>
+            2022 All rights reserved.</span>
+    </footer>
+
+    <!-- Owl Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script src="navscript.js"></script>
+    <!-- <script src="typing.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,1665 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+@{
+
+}
+
+<style>
+    .clickedPlan {
+        filter: grayscale(100%);
+    }
+</style>
+
+<!-- ============================================================== -->
+<!-- pageheader -->
+<!-- ============================================================== -->
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Application</h2>
+            <p class="pageheader-text"></p>  
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Application</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Policy</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+    @using (Html.BeginForm("Create", "PolicyApplication", FormMethod.Post, new { @id = "CreatePolicy" }))
+    {
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Policy Application</h5>
+
+                <div class="card-body">
+                    <span>
+                        Select Your Cover :
+                        @*<select id="cover">
+                                <option value="1">PIB (Cash Benefit)</option>
+                                <option value="2">MTG (Burial Plan)</option>
+                            </select>*@
+                        <img style="width: 146px; cursor: pointer; border-radius: 22px; " src="~/assets/images/MTGPlan.png" id="imgMTG" onclick="changePlan(2)" />
+                        <img style="width: 172px; cursor: pointer; border-radius: 22px; " src="~/assets/images/PIBPlan.png" id="imgPIB" onclick="changePlan(1)">
+                    </span>
+                    <br /><br />
+                    <div id="totalPremiumContainer">
+                        <span>
+                            <input type="hidden" id="IsPIB" value="true" />
+                            <input type="hidden" id="PrincipalMemberPremium" value="0" />
+                            <input type="hidden" id="ExtendendMemberPremium" value="0" />
+                            Total Premium to pay : R0.00
+                        </span>
+                    </div>
+
+                    <div class="table-responsive">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
+                            <div class="tab-regular">
+                                <div id="error" style="color: red;"></div>
+                                <div id="errsssor" style="color: red;">@Html.ValidationMessage("error")</div>
+                                <ul class="nav nav-pills " id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="profile" aria-selected="false"><b>Step 1 :</b>Principal Member Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="home-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="home" aria-selected="true"><b>Step 2 :</b>Premium Payer Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="contact" aria-selected="false"><b>Step 3 :</b>Family Details</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="Banking-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="profile" aria-selected="false"><b>Step 4 :</b>Banking Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="com-tab" data-toggle="tab" href="#tab6" role="tab" aria-controls="contact" aria-selected="false"><b>Step 5 :</b>Compliance</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="form-group pib">
+                                            <label for="inputText3" class="col-form-label">Select Policy</label><br />
+                                            @Html.DropDownListFor(x => x.CoverID, new SelectList(Model.PIBPolicies, "Value", "Text"), new { @class = "form-control", })
+                                        </div>
+                                        <div class="form-group mtg" style="display:none;">
+                                            <label for="inputText3" class="col-form-label">Select Policy</label>
+                                            @Html.DropDownListFor(x => x.MTGCoverID, new SelectList(Model.MTGPolicies, "Value", "Text"), new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Title</label><br />
+                                            @Html.TextBoxFor(x => x.AddPrincipalMemberDetails.Title, new { @class = "form-control", placeholder = "Title" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">First Name</label><br />
+                                            @Html.TextBoxFor(x => x.AddPrincipalMemberDetails.ContactPerson, new { @class = "form-control", placeholder = "First Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                                            @Html.TextBoxFor(x => x.AddPrincipalMemberDetails.MiddleName, new { @class = "form-control", placeholder = "Maiden Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Surname</label><br />
+                                            @Html.TextBoxFor(x => x.AddPrincipalMemberDetails.Surname, new { @class = "form-control", placeholder = "Surname" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">ID Number</label><br />
+                                            @Html.TextBoxFor(x => x.AddPrincipalMemberDetails.Idnum, new { @class = "form-control IDNo", placeholder = "SA ID/Passport", @maxlength = "15" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Marital Status</label><br />
+                                            @Html.DropDownListFor(x => x.AddPrincipalMemberDetails.MaritalStatus, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Married", Value = "Married" },
+                                               new SelectListItem{ Text="Single", Value = "Single" },
+                                               new SelectListItem{ Text="Widow", Value = "Widow" }
+                                            }, new { @class = "form-control", @id = "ddlMaritalStatus" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Cell Number</label><br />
+                                            @Html.TextBoxFor(x => x.AddPrincipalMemberDetails.ContactPhone, new { @class = "form-control", placeholder = "Cell Number" })
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary" id="SavePrincipalMemberDetails" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Save Details</button>
+
+                                    </div>
+                                    <span onclick="$('#contact-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Next</span>
+                                    <div class="tab-pane fade" id="tab1" role="tabpanel" aria-labelledby="home-tab">
+
+                                        @Html.HiddenFor(x => x.MemberProposer.FirstName, new { @id = "hdnFirstName" })
+                                        @Html.HiddenFor(x => x.MemberProposer.SecondName, new { @id = "hdnSecondName" })
+                                        @Html.HiddenFor(x => x.MemberProposer.Surname, new { @id = "hdnSurname" })
+                                        @Html.HiddenFor(x => x.MemberProposer.Idnum, new { @id = "hdnIdnum" })
+                                        @Html.HiddenFor(x => x.MemberProposer.ContactPhone, new { @id = "hdnContactPhone" })
+                                        @Html.HiddenFor(x => x.MemberProposer.WorkPhone, new { @id = "hdnWorkPhone" })
+                                        @Html.HiddenFor(x => x.MemberProposer.ContactEmail, new { @id = "hdnContactEmail" })
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">First Name</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.SecondName, new { @class = "form-control", placeholder = "Maiden Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Surname</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Surname, new { @class = "form-control", placeholder = "Surname" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">ID Number</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Idnum, new { @class = "form-control IDNo", placeholder = "SA ID/Passport", @maxlength = "15" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Cell Number</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.ContactPhone, new { @class = "form-control", placeholder = "Cell number" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Telephone(w)</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.WorkPhone, new { @class = "form-control", placeholder = "Telephone(w)" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Postal Address</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Address1, new { @class = "form-control", placeholder = "Address Line 1" })<br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Address2, new { @class = "form-control", placeholder = "Address Line 2" })<br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.Address3, new { @class = "form-control", placeholder = "Address Line 3" })<br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.PostalCode, new { @class = "form-control", placeholder = "Postal Code" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Email</label><br />
+                                            @Html.TextBoxFor(x => x.MemberProposer.ContactEmail, new { @class = "form-control", placeholder = "Email" })<br />
+                                        </div>
+                                        <div class="form-group" id="relationshipContainer">
+                                            <label for="inputText3" class="col-form-label">Relationship to Principal Member</label><br />
+                                            @Html.DropDownListFor(x => x.MemberProposer.RelationToPrincipalMember, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Mother", Value = "Mother" },
+                                               new SelectListItem{ Text="Father", Value = "Father" },
+                                               new SelectListItem{ Text="Mother-In-Law", Value = "Mother-In-Law" },
+                                               new SelectListItem{ Text="Father-In-Law", Value = "Father-In-Law" },
+                                               new SelectListItem{ Text="Child", Value = "Child" },
+                                               new SelectListItem{ Text="Other(Specify)", Value = "Other(Specify)" }
+                                            }, new { @class = "form-control" })<br />
+                                            @Html.TextBoxFor(x => x.RelationOther, new { @class = "form-control", placeholder = "Other(Specify)" })
+                                        </div>
+                                        @*<button type="submit" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Save Details</button>*@
+                                        <span onclick="$('#profile-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Previous</span>
+                                        <span onclick="$('#contact-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Next</span>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="contact-tab">
+                                        <div id="spouseContainer">
+                                            <h3>Spouse Details(if Marital status chosen is married )  </h3>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">First Name</label><br />
+                                                @Html.TextBoxFor(x => x.SpouseDetails.ContactPerson, new { @class = "form-control", placeholder = "First Name" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                                                @Html.TextBoxFor(x => x.SpouseDetails.MiddleName, new { @class = "form-control", placeholder = "Maiden Name" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Surname</label><br />
+                                                @Html.TextBoxFor(x => x.SpouseDetails.Surname, new { @class = "form-control", placeholder = "Surname" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">ID Number</label><br />
+                                                @Html.TextBoxFor(x => x.SpouseDetails.Idnum, new { @class = "form-control", placeholder = "ID Number", @maxlength = "15" })
+                                            </div>
+                                        </div>
+
+                                        <h3>Children's Details   </h3>
+                                        <span>
+                                            Do you have any children? :
+                                            <select id="anyChildren">
+                                                <option value="1">No</option>
+                                                <option value="2">Yes</option>
+                                            </select>
+                                        </span><br /><br />
+                                        <div id="childInfoContainer" style="display:none;">
+                                            <ul id="ChilList"></ul>
+                                            <div id="childrenContainer">
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">First Name</label><br />
+                                                    <input type="text" class="form-control" placeholder="First Name" id="ChildName" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                                                    <input type="text" class="form-control" placeholder="Maiden Name" id="ChildMaidenName" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">Surname</label><br />
+                                                    <input type="text" class="form-control" placeholder="Surname" id="ChildSurname" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">ID Number</label><br />
+                                                    <input type="text" class="form-control" name="ChildIDNo" maxlength="15" onblur="ValidateChildFamilyID(this)" placeholder="ID Number" id="ChildIDNumber" />
+                                                </div>
+                                            </div>
+                                            <span id="btnAddChild" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Add</span>
+                                            <br /><br />
+                                        </div>
+
+                                        <h3>Extended Families and wider children of the principal member</h3>
+                                        <span>
+                                            Do you have any extended family member? :
+                                            <select id="anySiblings">
+                                                <option value="1">No</option>
+                                                <option value="2">Yes</option>
+                                            </select>
+                                        </span><br /><br />
+                                        <div id="extendedFamiliesInfoContainer" style="display:none;">
+                                            @*<span>
+                                                    How many siblings :
+                                                    <select id="noSiblings">
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                        <option value="4">Four</option>
+                                                        <option value="5">Five</option>
+                                                    </select>
+                                                </span>
+                                                <div id="">
+
+                                                </div>*@
+                                            <div id="extendedFamiliesContainer">
+                                                <input type="hidden" id="hdnCounter" value="0" />
+                                                <input type="hidden" id="hdnExtendCounter" value="0" />
+                                                <ul id="MemberList">
+                                                </ul>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">First Name</label><br />
+                                                    <input type="text" class="form-control" placeholder="First Name" id="ExtendedFamiliesName" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                                                    <input type="text" class="form-control" placeholder="Maiden Name" id="ExtendedFamiliesMaidenName" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">Surname</label><br />
+                                                    <input type="text" class="form-control" placeholder="Surname" id="ExtendedFamiliesSurname" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">ID Number</label><br />
+                                                    <input type="text" class="form-control IDNo" placeholder="ID Number" name="ExtendedFamiliesIDNumber" id="ExtendedFamiliesIDNumber" maxlength="15" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputText3" class="col-form-label">Relationship</label><br />
+                                                    <input type="text" class="form-control" placeholder="Relationship" id="ExtendedFamiliesInsRef" />
+                                                </div>
+
+                                                @*<div class="form-group pib">
+                                                        <label for="inputText3" class="col-form-label">Cover / Premium(in Rands)</label><br />
+                                                        @Html.DropDownListFor(x => x.ExtendedFamilies[0].CoverId, new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem{ Text="N/A", Value = "N/A" },
+                                                           new SelectListItem{ Text="Bronze (Cover R5 000) / Premium R16", Value = "13" },
+                                                           //new SelectListItem{ Text="Executive (Cover R30 000) / Premium R120", Value = "76" },
+                                                           //new SelectListItem{ Text="VIP (Cover R20 000) / Premium R90", Value = "70" },
+                                                           //new SelectListItem{ Text="Dignity (Cover R15 000) / Premium R75", Value = "64" },
+                                                           new SelectListItem{ Text="Silver (Cover R10 000) / Premium R65", Value = "58" },
+                                                           //new SelectListItem{ Text="Standard (Cover R7 500) / Premium R50", Value = "50" },
+                                                           //new SelectListItem{ Text="New (Cover R50 000) / Premium R150", Value = "45" },
+                                                           new SelectListItem{ Text="Titanium (Cover R40 000) / Premium R120", Value = "40" },
+                                                           new SelectListItem{ Text="Diamond (Cover R30 000) / Premium R85", Value = "35" },
+                                                           new SelectListItem{ Text="Platinum (Cover R20 000) / Premium R65", Value = "30" },
+                                                           new SelectListItem{ Text="Gold (Cover R15 000) / Premium R40", Value = "25" },
+                                                           //new SelectListItem{ Text="Silver (Cover R10 000) / Premium R32", Value = "20" }
+                                                        }, new { @class = "form-control" })
+                                                    </div>*@
+                                                @*<div class="form-group mtg" style="display:none;">
+                                                        <label for="inputText3" class="col-form-label">Cover / Premium(in Rands)</label><br />
+                                                        @Html.DropDownListFor(x => x.ExtendedFamilies[0].CoverId, new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem{ Text="N/A", Value = "N/A" },
+                                                           //new SelectListItem{ Text="Bronze (Cover R5 000) / Premium R16", Value = "13" },
+                                                           new SelectListItem{ Text="Executive (Cover R30 000) / Premium R120", Value = "76" },
+                                                           new SelectListItem{ Text="VIP (Cover R20 000) / Premium R90", Value = "70" },
+                                                           new SelectListItem{ Text="Dignity (Cover R15 000) / Premium R75", Value = "64" },
+                                                           //new SelectListItem{ Text="Silver (Cover R10 000) / Premium R65", Value = "58" },
+                                                           new SelectListItem{ Text="Standard (Cover R7 500) / Premium R50", Value = "50" },
+                                                           new SelectListItem{ Text="New (Cover R50 000) / Premium R150", Value = "45" },
+                                                           //new SelectListItem{ Text="Titanium (Cover R40 000) / Premium R120", Value = "40" },
+                                                           //new SelectListItem{ Text="Diamond (Cover R30 000) / Premium R85", Value = "35" },
+                                                           //new SelectListItem{ Text="Platinum (Cover R20 000) / Premium R65", Value = "30" },
+                                                           //new SelectListItem{ Text="Gold (Cover R15 000) / Premium R40", Value = "25" },
+                                                           new SelectListItem{ Text="Silver (Cover R10 000) / Premium R32", Value = "20" }
+                                                        }, new { @class = "form-control" })
+                                                    </div>*@
+                                                <span id="btnAddMember" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Add</span>
+                                                <br /><br />
+                                            </div>
+                                        </div>
+
+                                        <h3>Beneficiary Nomination( I hereby nominate the following person who is my dependant or nominee, for any benefits due to be paid in the event of my death.  </h3>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">First Name</label><br />
+                                            @Html.TextBoxFor(x => x.Beneficiary.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Maiden Name</label><br />
+                                            @Html.TextBoxFor(x => x.Beneficiary.FirstName, new { @class = "form-control", placeholder = "Maiden Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Surname</label><br />
+                                            @Html.TextBoxFor(x => x.Beneficiary.Surname, new { @class = "form-control", placeholder = "Surname" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">ID Number</label><br />
+                                            @Html.TextBoxFor(x => x.Beneficiary.Idnum, new { @class = "form-control", placeholder = "ID Number", @maxlength = "15" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Relationship</label><br />
+                                            @Html.TextBoxFor(x => x.Beneficiary.Alias, new { @class = "form-control", placeholder = "Relationship" })
+                                        </div>
+                                        <span>
+                                            <button type="submit" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Save Details</button>
+                                        </span>
+                                        <span onclick="$('#home-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Previous</span>
+                                        <span onclick="$('#Banking-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Next</span>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="profile-tab">
+                                        <h3>Payment Details </h3>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Mode of payment</label><br />
+                                            @Html.DropDownListFor(x => x.Banking.CollectType, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Cash", Value = "CSH" },
+                                               new SelectListItem{ Text="Stop Order", Value = "S/O" },
+                                               new SelectListItem{ Text="Debit Order", Value = "D/O" }
+                                            }, new { @class = "form-control", @id = "ddlCollectType" })
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div id="CashDropdown">
+                                                <label for="inputText3" class="col-form-label">Frequency</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.CollectFreq, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Half Yearly", Value = "6" },
+                                                   new SelectListItem{ Text="Yearly", Value = "12" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                            <div id="BankingDropdown" style="display:none;">
+                                                <label for="inputText3" class="col-form-label">Frequency</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.CollectFreq, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Monthly", Value = "1" },
+                                                   new SelectListItem{ Text="Half Yearly", Value = "6" },
+                                                   new SelectListItem{ Text="Yearly", Value = "12" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText3" class="col-form-label">Policy commencement date</label><br />
+                                            @Html.TextBoxFor(x => x.CommencementDate, new { @class = "form-control datepicker", @type = "date", placeholder = "YYYY-MM-DD" })
+                                        </div>
+                                        <div id="bankingDetailsContainer" style="display:none;">
+                                            <h3>Banking Details </h3>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Bank Name</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.DoBankName, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Standard Bank", Value = "Standard Bank" },
+                                                   new SelectListItem{ Text="FNB", Value = "FNB" },
+                                                   new SelectListItem{ Text="Absa", Value = "Absa" },
+                                                   new SelectListItem{ Text="Nedbank", Value = "Nedbank" },
+                                                   new SelectListItem{ Text="Capitec", Value = "Capitec" },
+                                                   new SelectListItem{ Text="Other", Value = "Other" }
+                                                }, new { @class = "form-control", id = "ddlBankName" })<br />
+                                                @Html.TextBoxFor(x => x.OtherBankName, new { @class = "form-control", placeholder = "Other", @id = "otherBankName", @style = "display:none;" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Branch Code</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.DoBranchCode, new { @class = "form-control", placeholder = "Branch code" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Branch Name</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.DoBranchName, new { @class = "form-control", placeholder = "Branch" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Account Number</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.DoAccNum, new { @class = "form-control", @type = "number", placeholder = "Account Number" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Name of Account Holder</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.CollectSurname, new { @class = "form-control", placeholder = "Name of Account Holder" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Account Type</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.DoAccType, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Cheque", Value = "CHQ" },
+                                                   new SelectListItem{ Text="Savings", Value = "SAV" },
+                                                   new SelectListItem{ Text="Transmission", Value = "TRA" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">Debit order date</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.DoDebitDay, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="05th", Value = "5" },
+                                                   new SelectListItem{ Text="07th", Value = "7" },
+                                                   new SelectListItem{ Text="15th", Value = "15" },
+                                                   new SelectListItem{ Text="22nd", Value = "22" },
+                                                   new SelectListItem{ Text="25th", Value = "25" },
+                                                   new SelectListItem{ Text="27th", Value = "27" },
+                                                   new SelectListItem{ Text="Last day of the month", Value = "0" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                            <ul style="list-style-type:none;">
+                                                <li>DEBIT ORDER DEDUCTION AUTHORITY(APPLICABLE TO DEBIT ORDER PAYMENT ONLY)</li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>I hereby authorise PIB to commence a debit order withdrawal from my account on the debit day selected and monthly thereafter, with a possible percentage increase each year, for premium applicable for the cover selected. I understand that the debit order will be run on the date selected; if for whatever reason it is not honoured, 2(two) withdrawals runs will be submitted the next month. In the event of this run not being dishonoured, the policy will lapse, subject to the grace period as stipulated under the terms and conditions. No cash payments are acceptable for arrear or any other premiums. I understand that this signed document is required in PIB offices 10(ten) working days prior to the elected deduction date; if not, the deduction will only qualify for the following calendar month's deduction, and cover will only commence the following month.</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkADebit" id="chkADebit"><span>
+                                                                    <label for="chkADebit"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <span onclick="$('#contact-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Previous</span>
+                                        <span onclick="$('#com-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Next</span>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="contact-tab">
+                                        <h3>Compliance Checklist </h3><span>(indicate with a <b>yes/no</b> by clicking the <b>switch</b> box)</span><br /><br />
+                                        <div>
+                                            @Html.HiddenFor(x => x.Compliance.IntermediaryStatus)
+                                            @Html.HiddenFor(x => x.Compliance.Advice)
+                                            @Html.HiddenFor(x => x.Compliance.WaitingPeriods)
+                                            @Html.HiddenFor(x => x.Compliance.DebitOrder)
+                                            @Html.HiddenFor(x => x.Compliance.RightsReserved)
+                                            @Html.HiddenFor(x => x.Compliance.Exclusions)
+                                            @Html.HiddenFor(x => x.Compliance.ClaimsProcedure)
+                                            @Html.HiddenFor(x => x.Compliance.PolicyReplacement)
+                                            @Html.HiddenFor(x => x.Compliance.ApplicationStage)
+                                            @Html.HiddenFor(x => x.Compliance.PremiumPayerSignature)
+
+                                            <ul style="list-style-type:none;">
+                                                <li>
+                                                    A. INTEMEDIARY STATUS
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the sales representative:</li>
+                                                        <li>
+                                                            1. Disclosed his/her full names and designation?
+                                                        </li>
+                                                        <li>
+                                                            2. His/her contact details?
+                                                        </li>
+                                                        <li>
+                                                            3. Disclosed his/her fit and proper status
+                                                        </li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkIntermediaryStatus" id="chkIntermediaryStatus"><span>
+                                                                    <label for="chkIntermediaryStatus"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>B. ADVICE</li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the intermediary disclosed the following information to you:</li>
+                                                        <li>1. The name and type of policy?</li>
+                                                        <li>2. The premium?</li>
+                                                        <li>3. Type, extent and limitation of the benefits?</li>
+                                                        <li>4. The waiting period?</li>
+                                                        <li>5. The registered name and address of the insurer?</li>
+                                                        <li>6. Commission and remuneration payable to the intermediary?</li>
+                                                        <li>7. 30 days cooling off period?</li>
+                                                        <li>8. The claims notification procedure?</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkAdvice" id="chkAdvice"><span>
+                                                                    <label for="chkAdvice"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    C. WAITING PERIODS
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the intermediary disclosed that your policy has the following waiting period?</li>
+                                                        <li>1. For a Principal Member, his/her Spouse and eligible children, and his/her Extended family below the age of 74 years, there is a 6(six) months waiting period for claims due to natural causes.</li>
+                                                        <li>2. Only claims due to accidental death will be paid after a waiting period of 1(one) month, provided that premiums were received.</li>
+                                                        <li>3. For extended family above the age of 74 years, there is a 12(twelve) months waiting period for claims due to natural causes.</li>
+                                                        <li>4. Suicide will not be covered during the first 2(two) years of the membership form the commencement of the policy.</li>
+                                                        <li>5. should a member select a higher benefit than the currently enjoyed, the waiting period mentioned above will apply on the improved benefit.</li>
+                                                        <li>6. where premium payments are missed then resumed, the original waiting period will apply from the date payment of premiums is resumed.</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkWaitingPeriod" id="chkWaitingPeriod"><span>
+                                                                    <label for="chkWaitingPeriod"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    D. DEBIT ORDER
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the intermediary disclosed that the debit order will be lodged on the date as selected by yourselves. In the event of the debit order not being honoured on the due date, two debit amounts will be run the next month. At this run, should the debit order still not be honoured the policy lapse without further notice.</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkDebitOrder" id="chkDebitOrder"><span>
+                                                                    <label for="chkDebitOrder"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    E. RIGHTS RESERVED
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the intermediary disclosed to you that the insurer reserves the rights to:</li>
+                                                        <li>1. Increase the premium anytime and inform the client thereafter?</li>
+                                                        <li>2. Request further documentation or information as it may deem necessary to accurately access a claim?</li>
+                                                        <li>3. Refuse reinstating the policy that continually lapse</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkChiefReserved" id="chkChiefReserved"><span>
+                                                                    <label for="chkChiefReserved"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>F. EXCLUSIONS</li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the intermediary disclosed to you that the benefits will not be paid if death is directly or  caused by or attributable to:</li>
+                                                        <li>Terrorism or war(whether declared or not).</li>
+                                                        <li>Radioactive contamination, whether directly or indirectly.</li>
+                                                        <li>Death as a results of participation in illegal activities.</li>
+                                                        <li>Suicide will not be covered during the first 2(two) years of the membership form the commencement of the policy.</li>
+                                                        <li>Divorced spouses at inception of the policy are not covered, cover for spouse who divorce during the term of the policy will cease immediately on divorce.</li>
+                                                        <li>No waiver of premiums on this policy.</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkExclusions" id="chkExclusions"><span>
+                                                                    <label for="chkExclusions"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    G. CLAIMS PROCEDURE
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Has the intermediary disclosed to you that in the event of death all relevant supporting documents must be submitted to the Insurer within 6(six) months from the date of death. Failure to do so will result in the benefits being forfeited. Documents to be submitted include, but are not limited to:</li>
+                                                        <li>1. Fully completed claim notification form</li>
+                                                        <li>2. Proof of death:</li>
+                                                        <li>
+                                                            <ul style="list-style-type:none;">
+                                                                <li>a. (BI-5) Original or faxed certified copy of the computer produced death certificate: or</li>
+                                                                <li>b. (BI-18) Original or faxed certified copy of the unabridged death certificate: or</li>
+                                                                <li>c. (BI-20) Original or faxed certified copy of the abridged death certificate in respect of stillborn, together with supporting medical documents: and</li>
+                                                                <li>d. (BI-1663) A copy of the notification of death</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>3. Certified copy of  Principal Member’s Identity document for South Africa Citizens.</li>
+                                                        <li>4. Certified copy of Principal Member’s Passport for foreign nationals.</li>
+                                                        <li>5. Certified copy of deceased’s Identity document for South Africa Citizens.</li>
+                                                        <li>6. Certified copy of deceased’s Passport for foreign nationals.</li>
+                                                        <li>7. Copy of Principal Member’s payslip for a pay period immediately prior to death or the month in which the death occurred.</li>
+                                                        <li>8. In the event of a claim for a full-time student, a letter confirming full-time study from a recognised educational institution, together with the last academic report, must be submitted.</li>
+                                                        <li>9. For a disabled child. Confirmation of the disability grant, copy of medical application of the principal member or medical report must be submitted.</li>
+                                                        <li>10. Proof of payment. if paid by debit order, 3(three) months bank statement.</li>
+                                                        <li>11. Proof of marriage e.g. certified copy of the marriage certificate or confirmation letter from the tribal authorities.</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkClaimsProcedure" id="chkClaimsProcedure"><span>
+                                                                    <label for="chkClaimsProcedure"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    H. POLICY REPLACEMENT
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>
+                                                            Is this a proposal to replace the whole or any part of your existing insurance with a other insurance company?
+
+                                                            (if Yes, state the name of the company and the policy number)
+                                                        </li>
+                                                        <li>
+                                                            @Html.TextBoxFor(x => x.Compliance.PolicyReplacementCompany, new { @style = "display:none;", @class = "form-control" })
+                                                        </li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkPolicyReplacement" id="chkPolicyReplacement"><span>
+                                                                    <label for="chkPolicyReplacement"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    I. APPLICATION STAGE
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>Are you satisfied with the advice and disclosure that you have been given?</li>
+                                                        <li>Are you aware that completing and signing the application form does not mean that insurance has been granted?</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkApplicationStage" id="chkApplicationStage"><span>
+                                                                    <label for="chkApplicationStage"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    J. DECLARATION BY PROPOSER/PREMIUM PAYER
+                                                </li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>
+                                                            I declare to the best of my knowledge and belief that the particulars given above are true and correct. I understand and agree that any misrepresentation in this application will invalidate any benefit under this policy and that I undertake to abide by the terms and Conditions of the Policy and with  which I undertake to comply. The insurer shall not be liable for any amount until it has accepted first premium. I understand that I will not be covered for the months that I do not pay premiums, and that premiums are payable in advance.
+                                                            I further irrevocably authorise any doctor or other person who may be in the possession of and/or hereby acquire any information concerning my health to disclose such information to the insurer and agree that this authority shall remain in force even after my death.
+                                                            I know and understand the contents of this declaration and I have no objection to consider it to be binding on my conscience.
+                                                        </li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkDeclarationPremium" id="chkDeclarationPremium"><span>
+                                                                    <label for="chkDeclarationPremium"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="canvasContainer">
+
+                                        </div>
+                                        @Html.HiddenFor(m => m.base64String, new { @id = "base64String" })
+                                        @*<input type="hidden" id="base64String" name="base64String" />*@
+                                        <br /><br />
+                                        <div>
+                                            <span onclick="$('#Banking-tab').click(); window.scrollTo(0,0);" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Previous</span>
+                                            <br /><br />
+                                            <button type="submit" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Submit Policy Application</button>
+                                            <br /><br />
+                                            @*<button type="submit" name="submit" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important" value="Print">Submit Policy Application</button>*@
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>
+
+
+<script type="text/javascript">
+
+    $('#SavePrincipalMemberDetails').click(function (e) {
+    e.preventDefault(); // prevent default submit
+
+        var Name = $("#ContactPerson").val();
+        var MiddleName = $("#MiddleName").val(); 
+        var Surname = $("#Surname");
+        var Title = $("#Title");
+        var MaritalStatus = $("MaritalStatus");
+        var ContactPhone = $("ContactPhone");
+        var ContactCell = $("ContactCell");
+        var ContactEmail = $("ContactEmail");
+
+    // all property names must be same as the viewmodel has
+    var jsonData = {
+        ContactPerson: Name,
+        MiddleName: MiddleName,
+        Surname: Surname,
+        Title: Title,
+        MaritalStatus: MaritalStatus,
+        ContactPhone : ContactPhone,
+        ContactCell : ContactCell,
+        ContactEmail : ContactEmail
+
+    };
+
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("SaveSemester", "Student")',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(jsonData),
+        dataType: "json",
+        success: function() {
+            // do something
+        }
+    });
+});
+    $(document).ready(function () {
+
+        var signature = new ns.SignatureControl({
+            containerId: 'canvasContainer', callback: function () {
+                //alert('hello');
+            }
+        });
+        signature.init();
+
+        //window.addEventListener('DOMContentLoaded', loaded, false);hdnExtendCounter
+
+        $('#MemberProposer_FirstName').val("");
+        $('#MemberProposer_SecondName').val("");
+        $('#MemberProposer_Surname').val("");
+        $('#MemberProposer_Idnum').val("");
+        $('#MemberProposer_ContactPhone').val("");
+        $('#MemberProposer_WorkPhone').val("");
+        $('#MemberProposer_ContactEmail').val("");
+
+        $('#Save').click(function () {
+            $('#hdnExtendCounter').val(function (i, val) { return val * 1 + 1 });
+
+            var counter = $('#hdnExtendCounter').val();
+
+            var name = $('#ExtendedFamiliesName').val();
+            var MiddleName = $('#ExtendedFamiliesMaidenName').val();
+            var surname = $('#ExtendedFamiliesSurname').val();
+            var idNum = $('#ExtendedFamiliesIDNumber').val();
+            var insRef = $('#ExtendedFamiliesInsRef').val();
+            $("#ExtendedFamiliesName").val("");
+            $("#ExtendedFamiliesMaidenName").val("");
+            $("#ExtendedFamiliesSurname").val("");
+            $("#ExtendedFamiliesIDNumber").val("");
+            $("#ExtendedFamiliesInsRef").val("");
+            $('#MemberList').append('<li>' + name + ' ' + MiddleName + ' ' + surname + ' ' + idNum + ' ' + insRef +
+                '<input type="hidden" name="ExtendedFamilies[' + counter + ']ContactPerson" value="' + name + '"/> ' +
+                '<input type="hidden" name="ExtendedFamilies[' + counter + ']MiddleName" value="' + MiddleName + '"/> ' +
+                '<input type="hidden" name="ExtendedFamilies[' + counter + ']Surname" value="' + surname + '"/> ' +
+                '<input type="hidden" name="ExtendedFamilies[' + counter + ']Idnum" value="' + idNum + '"/> ' +
+                '<input type="hidden" name="ExtendedFamilies[' + counter + ']InsRef" value="' + insRef + '"/> ' +
+                ' <span id="btnAddMember" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">remove</span><br/><br/></li>');
+        });
+
+        $('#MemberList').on('click', 'li', function (e) {
+            $('#hdnExtendCounter').val(function (i, val) { return val * 1 - 1 });
+            $(this).remove();
+        });
+
+        $('#btnAddChild').click(function () {
+            $('#hdnCounter').val(function (i, val) { return val * 1 + 1 });
+
+            var counter = $('#hdnCounter').val();
+
+            //dont add more than 5 children
+            if (counter > 5) {
+                alert('You can only add the maximum of 5 children');
+
+                return false;
+            }
+
+            var name = $('#ChildName').val();
+            var MiddleName = $('#ChildMaidenName').val();
+            var surname = $('#ChildSurname').val();
+            var idNum = $('#ChildIDNumber').val();
+            $("#ChildName").val("");
+            $("#ChildMaidenName").val("");
+            $("#ChildSurname").val("");
+            $("#ChildIDNumber").val("");
+
+
+            $('#ChilList').append('<li>' + name + ' ' + MiddleName + ' ' + surname + ' ' + idNum +
+                '<input type="hidden" name="ChildrenDetails[' + counter + ']MiddleName" value="' + MiddleName + '"/> ' +
+                '<input type="hidden" name="ChildrenDetails[' + counter + ']ContactPerson" value="' + name + '"/> ' +
+                '<input type="hidden" name="ChildrenDetails[' + counter + ']Surname" value="' + surname + '"/> ' +
+                '<input type="hidden" name="ChildrenDetails[' + counter + ']Idnum" value="' + idNum + '"/> ' +
+                '<span id="btnAddMember" class="btn btn - secondary" style="background - color: #4656e9!important; border - color: #4656e9!important">remove</span><br/><br/></li>');
+        });
+
+        $('#ChilList').on('click', 'li', function (e) {
+            $('#hdnCounter').val(function (i, val) { return val * 1 - 1 });
+
+            $(this).remove();
+        });
+
+        //Recalculate the premium
+        $('.IDNo').blur(function () {
+
+            var idNo = $(this).val();
+            var rname = $(this).attr('name');
+            var ccoverId = $('#CoverID').val();
+
+            if (rname == 'PrincipalMemberDetails.Idnum') {
+                ValidatePrincipalMemberID();
+            } else {
+                ValidateExtendedFamilyID();
+            }
+
+            if (idNo !== '') {
+                if ($("#IsPIB").val()) {
+                    ccoverId = $('#MTGCoverID').val();
+                }
+
+                var pmPremium = $('#PrincipalMemberPremium').val();
+                var exPremium = $('#ExtendendMemberPremium').val();
+
+                $.ajax({
+                    url: '@Url.Action("LoadTotalPremium", "PolicyApplication")',
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    data: { idNum: idNo, name: rname, coverId: ccoverId, pPremium: pmPremium, ePremium: exPremium },
+                    success: function (result) {
+                        $("#totalPremiumContainer").html('');
+                        $('#totalPremiumContainer').html(result);
+                    },
+                    error: function (status) {
+                        alert(status);
+                    }
+                        //dataType: 'html'
+                });
+            }
+
+
+        });
+
+        //Show Loader
+        $("#CreatePolicy").submit(function () {
+            ValidatePremiumPayerID();
+            ValidatePrincipalMemberID();
+            ValidateSpouseID();
+            ValidateBeneficiaryID();
+
+            //Set the signature
+            var base64 = $("#signatureCanvas")[0].toDataURL("image/png");
+            //alert(base64);
+            $("#base64String").val(base64);
+
+            $('.PIBloader').show();
+        });
+
+        //Set premium payer flag
+        $('#chkIsPayer').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#MemberProposer_FirstName').val($('#hdnFirstName').val());
+                $('#MemberProposer_SecondName').val($('#hdnSecondName').val());
+                $('#MemberProposer_Surname').val($('#hdnSurname').val());
+                $('#MemberProposer_Idnum').val($('#hdnIdnum').val());
+                $('#MemberProposer_ContactPhone').val($('#hdnContactPhone').val());
+                $('#MemberProposer_WorkPhone').val($('#hdnWorkPhone').val());
+                $('#MemberProposer_ContactEmail').val($('#hdnContactEmail').val());
+
+                //hide the relationship container
+                $('#relationshipContainer').hide();
+                $('#MemberProposer_RelationToPrincipalMember').val('Other(Specify)');
+                $('#RelationOther').val('Owner');
+            }else if ($(this).prop("checked") == false) {
+                $('#MemberProposer_FirstName').val("");
+                $('#MemberProposer_SecondName').val("");
+                $('#MemberProposer_Surname').val("");
+                $('#MemberProposer_Idnum').val("");
+                $('#MemberProposer_ContactPhone').val("");
+                $('#MemberProposer_WorkPhone').val("");
+                $('#MemberProposer_ContactEmail').val("");
+
+                $('#relationshipContainer').show();
+                $('#RelationOther').val('');
+            }
+        });
+
+        //Set compliance flags
+        $('#chkIntermediaryStatus').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_IntermediaryStatus').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_IntermediaryStatus').val(false);
+            }
+        });
+
+        $('#chkAdvice').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_Advice').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_Advice').val(false);
+            }
+        });
+
+        $('#chkWaitingPeriod').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_WaitingPeriods').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_WaitingPeriods').val(false);
+            }
+        });
+
+        $('#chkDebitOrder').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_DebitOrder').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_DebitOrder').val(false);
+            }
+        });
+
+        $('#chkChiefReserved').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_RightsReserved').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_RightsReserved').val(false);
+            }
+        });
+
+        $('#chkExclusions').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_Exclusions').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_Exclusions').val(false);
+            }
+        });
+
+        $('#chkClaimsProcedure').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_ClaimsProcedure').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_ClaimsProcedure').val(false);
+            }
+        });
+
+        $('#chkPolicyReplacement').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_PolicyReplacementCompany').show();
+                $('#Compliance_PolicyReplacement').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_PolicyReplacementCompany').hide();
+                $('#Compliance_PolicyReplacement').val(false);
+            }
+        });
+
+        $('#chkApplicationStage').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_ApplicationStage').val(true);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_ApplicationStage').val(false);
+            }
+        });
+
+        $('#chkDeclarationPremium').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#Compliance_PremiumPayerSignature').val('Yes');
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#Compliance_PremiumPayerSignature').val('No');
+            }
+        });
+
+        //Show and hide the covers
+        $("#cover").change(function () {
+            if ($(this).val() == 1) {
+                $(".pib").show();
+                $(".mtg").hide();
+            }
+            else {
+                $(".mtg").show();
+                $(".pib").hide();
+            }
+        });
+
+        //Show and hide children
+        $("#anyChildren").change(function () {
+            if ($(this).val() == 2) {
+                $("#childInfoContainer").show();
+            }
+            else {
+                $("#childInfoContainer").hide();
+            }
+        });
+
+        //Show and hide family
+        $("#anySiblings").change(function () {
+            if ($(this).val() == 2) {
+                $("#extendedFamiliesInfoContainer").show();
+            }
+            else {
+                $("#extendedFamiliesInfoContainer").hide();
+            }
+        });
+
+        //Show other bank
+        $("#ddlBankName").change(function () {
+            if ($(this).val() == "Other") {
+                $("#otherBankName").show();
+            }
+            else {
+                $("#otherBankName").hide();
+            }
+        });
+
+        //Show and hide spouse
+        $("#ddlMaritalStatus").change(function () {
+            if ($(this).val() == 'Married') {
+                $("#spouseContainer").show();
+            }
+            else {
+                $("#spouseContainer").hide();
+            }
+        });
+
+        //Show or hide banking details
+        $("#ddlCollectType").change(function () {
+            if ($(this).val() == 'D/O') {
+                $("#bankingDetailsContainer").show();
+            }
+            else {
+                $("#bankingDetailsContainer").hide();
+            }
+
+            if ($(this).val() == 'CSH') {
+                $("#CashDropdown").show();
+                $("#BankingDropdown").hide();
+            } else {
+                $("#CashDropdown").hide();
+                $("#BankingDropdown").show();
+            }
+
+        });
+
+        //Load new form elements for children
+        $('#noChildren').on('change', function () {
+
+            $.ajax({
+                url: '@Url.Action("LoadChildren", "PolicyApplication")',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                data: { no: this.value },
+                success: function (result) {
+                    $("#childrenContainer").html('')
+                    $('#childrenContainer').html(result);
+                },
+                error: function (status) {
+                    alert(status);
+                }
+                //dataType: 'html'
+            });
+        });
+
+        //Load new form elements for siblings
+        $('#noSiblings').on('change', function () {
+
+            $.ajax({
+                url: '@Url.Action("LoadSiblings", "PolicyApplication")',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                data: { no: this.value },
+                success: function (result) {
+                    $("#extendedFamiliesContainer").html('')
+                    $('#extendedFamiliesContainer').html(result);
+                },
+                error: function (status) {
+                    alert(status);
+                }
+            });
+        });
+
+        //Set the date picker
+        $('.datepicker').datepicker({
+
+            startDate: new Date()
+
+        });
+
+        //$('.datepicker').datepicker({
+        //    dateFormat: "dd/M/yy",
+        //    changeMonth: true,
+        //    changeYear: true
+        //});
+
+    })
+
+    function changePlan(id) {
+        if (id == 1) {
+            $(".pib").show();
+            $(".mtg").hide();
+            $("#IsPIB").val(true);
+
+            $('#imgPIB').addClass('clickedPlan');
+            $('#imgMTG').removeClass('clickedPlan');
+        }
+        else {
+            $(".mtg").show();
+            $(".pib").hide();
+            $("#IsPIB").val(false);
+
+            $('#imgPIB').removeClass('clickedPlan');
+            $('#imgMTG').addClass('clickedPlan');
+        }
+    }
+
+    function ValidatePremiumPayerID() {
+        // first clear any left over error messages
+        $('#error p').remove();
+
+        // store the error div, to save typing
+        var error = $('#error');
+
+        var idNumber = $('#MemberProposer_Idnum').val();
+
+        // assume everything is correct and if it later turns out not to be, just set this to false
+        var correct = true;
+
+        //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+        // SA ID Number have to be 13 digits, so check the length
+        if (idNumber.length != 13 || !isNumber(idNumber)) {
+            error.append('<p>Premium Payer ID number does not appear to be authentic - input not a valid number</p>');
+            correct = false;
+        }
+
+        // get first 6 digits as a valid date
+        var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+        var id_date = tempDate.getDate();
+        var id_month = tempDate.getMonth();
+        var id_year = tempDate.getFullYear();
+
+        var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+        if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+            error.append('<p>Premium Payer ID number does not appear to be authentic - date part not valid</p>');
+            correct = false;
+        }
+
+        // get the gender
+        var genderCode = idNumber.substring(6, 10);
+        var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+        // get country ID for citzenship
+        var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+        // apply Luhn formula for check-digits
+        var tempTotal = 0;
+        var checkSum = 0;
+        var multiplier = 1;
+        for (var i = 0; i < 13; ++i) {
+            tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+            if (tempTotal > 9) {
+                tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+            }
+            checkSum = checkSum + tempTotal;
+            multiplier = (multiplier % 2 == 0) ? 1 : 2;
+        }
+        if ((checkSum % 10) != 0) {
+            error.append('<p>Premium Payer ID number does not appear to be authentic - check digit is not valid</p>');
+            correct = false;
+        };
+
+        // if no error found, hide the error message
+        if (correct) {
+            error.css('display', 'none');
+
+            // clear the result div
+            //$('#result').empty();
+            // and put together a result message
+            //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+        }
+        // otherwise, show the error
+        else {
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+    }
+
+    function ValidatePrincipalMemberID() {
+        // first clear any left over error messages
+        $('#error p').remove();
+
+        // store the error div, to save typing
+        var error = $('#error');
+
+        var idNumber = $('#PrincipalMemberDetails_Idnum').val();
+
+
+        // assume everything is correct and if it later turns out not to be, just set this to false
+        var correct = true;
+
+        //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+        // SA ID Number have to be 13 digits, so check the length
+        if (idNumber.length != 13 || !isNumber(idNumber)) {
+            error.append('<p>Principa lMember ID number does not appear to be authentic - input not a valid number</p>');
+            correct = false;
+        }
+
+        // get first 6 digits as a valid date
+        var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+        var id_date = tempDate.getDate();
+        var id_month = tempDate.getMonth();
+        var id_year = tempDate.getFullYear();
+
+        var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+        if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+            error.append('<p>Principal Member ID number does not appear to be authentic - date part not valid</p>');
+            correct = false;
+        }
+
+        // get the gender
+        var genderCode = idNumber.substring(6, 10);
+        var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+        // get country ID for citzenship
+        var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+        // apply Luhn formula for check-digits
+        var tempTotal = 0;
+        var checkSum = 0;
+        var multiplier = 1;
+        for (var i = 0; i < 13; ++i) {
+            tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+            if (tempTotal > 9) {
+                tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+            }
+            checkSum = checkSum + tempTotal;
+            multiplier = (multiplier % 2 == 0) ? 1 : 2;
+        }
+        if ((checkSum % 10) != 0) {
+            error.append('<p>Principal Member ID number does not appear to be authentic - check digit is not valid</p>');
+            correct = false;
+        };
+
+        // if no error found, hide the error message
+        if (correct) {
+            error.css('display', 'none');
+
+            // clear the result div
+            //$('#result').empty();
+            // and put together a result message
+            //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+        }
+        // otherwise, show the error
+        else {
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+    }
+
+    function ValidateSpouseID() {
+        // first clear any left over error messages
+        $('#error p').remove();
+
+        // store the error div, to save typing
+        var error = $('#error');
+
+        var idNumber = $('#SpouseDetails_Idnum').val();
+
+        // assume everything is correct and if it later turns out not to be, just set this to false
+        var correct = true;
+
+        //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+        // SA ID Number have to be 13 digits, so check the length
+        if (idNumber.length != 13 || !isNumber(idNumber)) {
+            error.append('<p>Spouse ID number does not appear to be authentic - input not a valid number</p>');
+            correct = false;
+        }
+
+        // get first 6 digits as a valid date
+        var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+        var id_date = tempDate.getDate();
+        var id_month = tempDate.getMonth();
+        var id_year = tempDate.getFullYear();
+
+        var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+        if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+            error.append('<p>Spouse ID number does not appear to be authentic - date part not valid</p>');
+            correct = false;
+        }
+
+        // get the gender
+        var genderCode = idNumber.substring(6, 10);
+        var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+        // get country ID for citzenship
+        var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+        // apply Luhn formula for check-digits
+        var tempTotal = 0;
+        var checkSum = 0;
+        var multiplier = 1;
+        for (var i = 0; i < 13; ++i) {
+            tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+            if (tempTotal > 9) {
+                tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+            }
+            checkSum = checkSum + tempTotal;
+            multiplier = (multiplier % 2 == 0) ? 1 : 2;
+        }
+        if ((checkSum % 10) != 0) {
+            error.append('<p>Spouse ID number does not appear to be authentic - check digit is not valid</p>');
+            correct = false;
+        };
+
+        // if no error found, hide the error message
+        if (correct) {
+            error.css('display', 'none');
+
+            // clear the result div
+            //$('#result').empty();
+            // and put together a result message
+            //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+        }
+        // otherwise, show the error
+        else {
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+    }
+
+    function ValidateChildFamilyID(ele) {
+        // first clear any left over error messages
+        $('#error p').remove();
+
+        // store the error div, to save typing
+        var error = $('#error');
+
+        var idNumber = $(ele).val();
+
+        if (idNumber == '') {
+
+            return false;
+        }
+
+        // assume everything is correct and if it later turns out not to be, just set this to false
+        var correct = true;
+
+        //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+        // SA ID Number have to be 13 digits, so check the length
+        if (idNumber.length != 13 || !isNumber(idNumber)) {
+            error.append('<p>Child ID number does not appear to be authentic - input not a valid number</p>');
+            correct = false;
+        }
+
+        // get first 6 digits as a valid date
+        var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+        var id_date = tempDate.getDate();
+        var id_month = tempDate.getMonth();
+        var id_year = tempDate.getFullYear();
+
+        var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+        if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+            error.append('<p>Child ID number does not appear to be authentic - date part not valid</p>');
+            correct = false;
+        }
+
+        // get the gender
+        var genderCode = idNumber.substring(6, 10);
+        var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+        // get country ID for citzenship
+        var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+        // apply Luhn formula for check-digits
+        var tempTotal = 0;
+        var checkSum = 0;
+        var multiplier = 1;
+        for (var i = 0; i < 13; ++i) {
+            tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+            if (tempTotal > 9) {
+                tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+            }
+            checkSum = checkSum + tempTotal;
+            multiplier = (multiplier % 2 == 0) ? 1 : 2;
+        }
+        if ((checkSum % 10) != 0) {
+            error.append('<p>Child ID number does not appear to be authentic - check digit is not valid</p>');
+            correct = false;
+        };
+
+        // if no error found, hide the error message
+        if (correct) {
+            error.css('display', 'none');
+
+            // clear the result div
+            //$('#result').empty();
+            // and put together a result message
+            //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+        }
+        // otherwise, show the error
+        else {
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+    }
+
+    function ValidateExtendedFamilyID() {
+        // first clear any left over error messages
+        $('#error p').remove();
+
+        // store the error div, to save typing
+        var error = $('#error');
+
+        var idNumber = $('#ExtendedFamiliesIDNumber').val();
+
+        if (idNumber == '') {
+
+            return false;
+        }
+
+        // assume everything is correct and if it later turns out not to be, just set this to false
+        var correct = true;
+
+        //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+        // SA ID Number have to be 13 digits, so check the length
+        if (idNumber.length != 13 || !isNumber(idNumber)) {
+            error.append('<p>Family Member ID number does not appear to be authentic - input not a valid number</p>');
+            correct = false;
+        }
+
+        // get first 6 digits as a valid date
+        var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+        var id_date = tempDate.getDate();
+        var id_month = tempDate.getMonth();
+        var id_year = tempDate.getFullYear();
+
+        var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+        if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+            error.append('<p>Family Member ID number does not appear to be authentic - date part not valid</p>');
+            correct = false;
+        }
+
+        // get the gender
+        var genderCode = idNumber.substring(6, 10);
+        var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+        // get country ID for citzenship
+        var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+        // apply Luhn formula for check-digits
+        var tempTotal = 0;
+        var checkSum = 0;
+        var multiplier = 1;
+        for (var i = 0; i < 13; ++i) {
+            tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+            if (tempTotal > 9) {
+                tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+            }
+            checkSum = checkSum + tempTotal;
+            multiplier = (multiplier % 2 == 0) ? 1 : 2;
+        }
+        if ((checkSum % 10) != 0) {
+            error.append('<p>Family Member ID number does not appear to be authentic - check digit is not valid</p>');
+            correct = false;
+        };
+
+        // if no error found, hide the error message
+        if (correct) {
+            error.css('display', 'none');
+
+            // clear the result div
+            //$('#result').empty();
+            // and put together a result message
+            //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+        }
+        // otherwise, show the error
+        else {
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+    }
+
+    function ValidateBeneficiaryID() {
+        // first clear any left over error messages
+        $('#error p').remove();
+
+        // store the error div, to save typing
+        var error = $('#error');
+
+        var idNumber = $('#Beneficiary_Idnum').val();
+
+        if (idNumber == '') {
+
+            error.append('<p>Beneficiary Details are required</p>');
+
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+        // assume everything is correct and if it later turns out not to be, just set this to false
+        var correct = true;
+
+        //Ref: http://www.sadev.co.za/content/what-south-african-id-number-made
+        // SA ID Number have to be 13 digits, so check the length
+        if (idNumber.length != 13 || !isNumber(idNumber)) {
+            error.append('<p>Beneficiary ID number does not appear to be authentic - input not a valid number</p>');
+            correct = false;
+        }
+
+        // get first 6 digits as a valid date
+        var tempDate = new Date(idNumber.substring(0, 2), idNumber.substring(2, 4) - 1, idNumber.substring(4, 6));
+
+        var id_date = tempDate.getDate();
+        var id_month = tempDate.getMonth();
+        var id_year = tempDate.getFullYear();
+
+        var fullDate = id_date + "-" + (id_month + 1) + "-" + id_year;
+
+        if (!((tempDate.getYear() == idNumber.substring(0, 2)) && (id_month == idNumber.substring(2, 4) - 1) && (id_date == idNumber.substring(4, 6)))) {
+            error.append('<p>Beneficiary ID number does not appear to be authentic - date part not valid</p>');
+            correct = false;
+        }
+
+        // get the gender
+        var genderCode = idNumber.substring(6, 10);
+        var gender = parseInt(genderCode) < 5000 ? "Female" : "Male";
+
+        // get country ID for citzenship
+        var citzenship = parseInt(idNumber.substring(10, 11)) == 0 ? "Yes" : "No";
+
+        // apply Luhn formula for check-digits
+        var tempTotal = 0;
+        var checkSum = 0;
+        var multiplier = 1;
+        for (var i = 0; i < 13; ++i) {
+            tempTotal = parseInt(idNumber.charAt(i)) * multiplier;
+            if (tempTotal > 9) {
+                tempTotal = parseInt(tempTotal.toString().charAt(0)) + parseInt(tempTotal.toString().charAt(1));
+            }
+            checkSum = checkSum + tempTotal;
+            multiplier = (multiplier % 2 == 0) ? 1 : 2;
+        }
+        if ((checkSum % 10) != 0) {
+            error.append('<p>Beneficiary ID number does not appear to be authentic - check digit is not valid</p>');
+            correct = false;
+        };
+
+        // if no error found, hide the error message
+        if (correct) {
+            error.css('display', 'none');
+
+            // clear the result div
+            //$('#result').empty();
+            // and put together a result message
+            //$('#result').append('<p>South African ID Number:   ' + idNumber + '</p><p>Birth Date:   ' + fullDate + '</p><p>Gender:  ' + gender + '</p><p>SA Citizen:  ' + citzenship + '</p>');
+        }
+        // otherwise, show the error
+        else {
+            $('.PIBloader').hide();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            error.css('display', 'block');
+
+            return false;
+        }
+
+    }
+
+    function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    $('#CreatePolicy').submit(ValidatePremiumPayerID);
+</script>

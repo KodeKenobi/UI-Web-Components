@@ -1,0 +1,161 @@
+﻿@model PolicyManagementSystem.Controllers.Models.PolicyApplicationViewModel
+@{
+
+}
+<!-- ============================================================== -->
+<!-- pageheader -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Policy Management</h2>
+            <p class="pageheader-text"></p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        @*<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>*@
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Policy Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Amendments Allowed</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+    @using (Html.BeginForm("Create", "PolicyManagement", FormMethod.Post))
+    {
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Change Payment Method</h5>
+                <div class="card-body" style="width: 1040px;">
+                    <div class="table-responsive">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
+                            <div class="tab-regular">
+                                <ul class="nav nav-tabs " id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="Payment-tab" data-toggle="tab1" href="#tab1" role="tab" aria-controls="paymentmethod" aria-selected="false">Payment Methods</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="Payment-tab">
+                                        <h3>Payment Details </h3>
+                                        <div class="form-group">
+                                            <label for="inputText1" class="col-form-label">Mode of payment</label><br />
+                                            @Html.DropDownListFor(x => x.Banking.CollectType, new List<SelectListItem>
+                                            {
+                                               new SelectListItem{ Text="Cash", Value = "CSH" },
+                                               new SelectListItem{ Text="Stop Order", Value = "S/O" },
+                                               new SelectListItem{ Text="Debit Order", Value = "D/O" }
+                                            }, new { @class = "form-control", @id = "ddlCollectType" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div id="CashDropdown">
+                                                <label for="inputText1" class="col-form-label">Frequency</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.CollectFreq, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Half Yearly", Value = "6" },
+                                                   new SelectListItem{ Text="Yearly", Value = "12" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                            <div id="BankingDropdown" style="display:none;">
+                                                <label for="inputText1" class="col-form-label">Frequency</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.CollectFreq, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Monthly", Value = "1" },
+                                                   new SelectListItem{ Text="Half Yearly", Value = "6" },
+                                                   new SelectListItem{ Text="Yearly", Value = "12" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputText1" class="col-form-label">Policy commencement date</label><br />
+                                            @Html.TextBoxFor(x => x.CommencementDate, new { @class = "form-control datepicker", @type = "date", placeholder = "YYYY-MM-DD" })
+                                        </div>
+                                        <div id="bankingDetailsContainer" style="display:none;">
+                                            <h3>Banking Details </h3>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Bank Name</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.DoBankName, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Standard Bank", Value = "Standard Bank" },
+                                                   new SelectListItem{ Text="FNB", Value = "FNB" },
+                                                   new SelectListItem{ Text="Absa", Value = "Absa" },
+                                                   new SelectListItem{ Text="Nedbank", Value = "Nedbank" },
+                                                   new SelectListItem{ Text="Capitec", Value = "Capitec" },
+                                                   new SelectListItem{ Text="Other", Value = "Other" }
+                                                }, new { @class = "form-control", id = "ddlBankName" })<br />
+                                                @Html.TextBoxFor(x => x.OtherBankName, new { @class = "form-control", placeholder = "Other", @id = "otherBankName", @style = "display:none;" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Branch Code</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.DoBranchCode, new { @class = "form-control", placeholder = "Branch code" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Branch Name</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.DoBranchName, new { @class = "form-control", placeholder = "Branch" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Account Number</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.DoAccNum, new { @class = "form-control", @type = "number", placeholder = "Account Number" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Name of Account Holder</label><br />
+                                                @Html.TextBoxFor(x => x.Banking.CollectSurname, new { @class = "form-control", placeholder = "Name of Account Holder" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Account Type</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.DoAccType, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Cheque", Value = "CHQ" },
+                                                   new SelectListItem{ Text="Savings", Value = "SAV" },
+                                                   new SelectListItem{ Text="Transmission", Value = "TRA" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText1" class="col-form-label">Debit order date</label><br />
+                                                @Html.DropDownListFor(x => x.Banking.DoDebitDay, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="05th", Value = "5" },
+                                                   new SelectListItem{ Text="07th", Value = "7" },
+                                                   new SelectListItem{ Text="15th", Value = "15" },
+                                                   new SelectListItem{ Text="22nd", Value = "22" },
+                                                   new SelectListItem{ Text="25th", Value = "25" },
+                                                   new SelectListItem{ Text="27th", Value = "27" },
+                                                   new SelectListItem{ Text="Last day of the month", Value = "0" }
+                                                }, new { @class = "form-control" })
+                                            </div>
+                                            <ul style="list-style-type:none;">
+                                                <li>DEBIT ORDER DEDUCTION AUTHORITY(APPLICABLE TO DEBIT ORDER PAYMENT ONLY)</li>
+                                                <li>
+                                                    <ul style="list-style-type:none;">
+                                                        <li>I hereby authorise PIB to commence a debit order withdrawal from my account on the debit day selected and monthly thereafter, with a possible percentage increase each year, for premium applicable for the cover selected. I understand that the debit order will be run on the date selected; if for whatever reason it is not honoured, 2(two) withdrawals runs will be submitted the next month. In the event of this run not being dishonoured, the policy will lapse, subject to the grace period as stipulated under the terms and conditions. No cash payments are acceptable for arrear or any other premiums. I understand that this signed document is required in PIB offices 10(ten) working days prior to the elected deduction date; if not, the deduction will only qualify for the following calendar month's deduction, and cover will only commence the following month.</li>
+                                                        <li>
+                                                            <div class="switch-button switch-button-success">
+                                                                <input type="checkbox" name="chkADebit" id="chkADebit"><span>
+                                                                    <label for="chkADebit"></label>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                        <a href="#" class="btn btn-secondary" style="background-color: #4656e9 !important; border-color: #4656e9 !important">Amend</a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>

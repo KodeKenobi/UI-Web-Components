@@ -1,0 +1,59 @@
+﻿@model PolicyManagementSystem.Controllers.Models.ClientEngagementViewModel
+@{
+}
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="section-block" id="basicform">
+            <h3 class="section-title">View Client</h3>
+            <p></p>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Client Details</h5>
+            @using (Html.BeginForm("Update", "PreliminaryClientEngagement", FormMethod.Post, new { @id = "CreatePolicy" }))
+            {
+                <div class="card-body">
+                    @Html.HiddenFor(x => x.CallMeBack.Id)
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Full Name</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.FullName, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Last Name</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.LastName, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Mobile Number</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.MobileNumber, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.Email, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Province</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.Province, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Nearest Branch</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.NearestBranch, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Product</label>
+                        @Html.TextBoxFor(x => x.CallMeBack.Product, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Comment</label>
+                        @Html.TextAreaFor(x => x.CallMeBack.Comment, new { @class = "form-control", rows = "3" })
+                    </div>
+
+                    @*<textarea class="form-control" name="Comment" placeholder="Comment" rows="3"></textarea>*@
+                    <input type="submit" value="submit" class="btn btn-primary btn-block" />
+                    <a asp-controller="PreliminaryClientEngagement" asp-action="ListEngangements" class="btn btn-primary btn-block">Back</a>
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

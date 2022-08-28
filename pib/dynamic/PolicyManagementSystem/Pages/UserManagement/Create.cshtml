@@ -1,0 +1,101 @@
+﻿@model PolicyManagementSystem.Controllers.Models.UserManagementViewModel
+@{
+}
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="section-block" id="basicform">
+            <h3 class="section-title">Create Employee Profile</h3>
+            <p></p>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Employee</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("Create", "UserManagement", FormMethod.Post))
+                {
+                    <div id="errsssor" style="color: red;">@Html.ValidationMessage("error")</div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Title</label>
+                        @Html.TextBoxFor(x => x.tblUseraccount.FldUserTitle, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Employee Full Name</label>
+                        @Html.TextBoxFor(x => x.tblUseraccount.FldUsername, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Phone Number</label>
+                        @Html.TextBoxFor(x => x.Agent.ContactPhone, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Email</label>
+                        @Html.TextBoxFor(x => x.tblUseraccount.FldUserEmail, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => Model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.DropDownListFor(x => Model.Address, new SelectList(Model.Addresses, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Province" })
+                            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Province</label>
+                        @Html.TextBoxFor(x => x.Address.Province, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">City</label>
+                        @Html.TextBoxFor(x => x.Address.City, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Branch</label>
+                        @Html.TextBoxFor(x => x.Address.AddressName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-form-label">Office Address</label>
+                        @Html.TextBoxFor(x => x.Address.Province, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label for="inputText3" class="col-form-label">Branch</label>
+                        @Html.DropDownListFor(x => x.Agent.Address2, new List<SelectListItem>
+                        {
+                           new SelectListItem{ Text="Tshilamba Mutale", Value = "Tshilamba Mutale" },
+                           new SelectListItem{ Text="Thohoyandou", Value = "Thohoyandou" },
+                           new SelectListItem{ Text="Thavhani Mall", Value = "Thavhani Mall" },
+                           new SelectListItem{ Text="Giyani", Value = "Giyani" },
+                           new SelectListItem{ Text="Makhado", Value = "Makhado" },
+                           new SelectListItem{ Text="Musina", Value = "Musina" },
+                           new SelectListItem{ Text="Johannesburg", Value = "Johannesburg" },
+                           new SelectListItem{ Text="Sibasa", Value = "Sibasa" },
+                           new SelectListItem{ Text="Polokwane", Value = "Polokwane" }
+                        }, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Password</label>
+                        @Html.PasswordFor(x => x.tblUseraccount.FldUserPassword, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText4" class="col-form-label">Account Type</label>
+                        @Html.DropDownListFor(x => x.tblUseraccount.FldUserAccounttype, new List<SelectListItem>
+                        {
+                           new SelectListItem{ Text="Administrator", Value = "Administrator" },
+                           new SelectListItem{ Text="Brokers", Value = "Brokers" },
+                           new SelectListItem{ Text="Verification officer", Value = "Verification officer" },
+                           new SelectListItem{ Text="Sales Manager", Value = "Sales Manager" },
+                           new SelectListItem{ Text="Chief Operating Officer", Value = "Chief Operating Officer" },
+                           new SelectListItem{ Text="Marketing Director", Value = "Marketing Director" },
+                           new SelectListItem{ Text="Human Resource Assistant and Manager", Value = "Human Resource Assistant and Manager" }
+                        }, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Department</label>
+                        @Html.TextBoxFor(x => x.tblUseraccount.FldUserDepartment, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Job Title</label>
+                        @Html.TextBoxFor(x => x.tblUseraccount.FldUserJobtitle, new { @class = "form-control" })
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Add Employee</button>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
